@@ -20,7 +20,6 @@
 @synthesize doneButton;
 @synthesize metronomeSwitch;
 @synthesize precisionTimingSwitch;
-//@synthesize precisionContrastSwitch;
 @synthesize delayStartSwitch;
 @synthesize backgroundRectangle;
 @synthesize brightnessSwitch;
@@ -42,12 +41,7 @@
     if ([precisionTiming isEqual: @"YES"])
         [precisionTimingSwitch setTitle:[NSString stringWithFormat: @"          On"] forState:UIControlStateNormal];
     else [precisionTimingSwitch setTitle:[NSString stringWithFormat: @"  Off"] forState:UIControlStateNormal];
-    
-//    NSString *precionContrast = [prefs stringForKey:@"precisionContrast"];
-//    if ([precionContrast isEqual: @"YES"])
-//        [precisionContrastSwitch setTitle:[NSString stringWithFormat: @"          On"] forState:UIControlStateNormal];
- //   else [precisionContrastSwitch setTitle:[NSString stringWithFormat: @"  Off"] forState:UIControlStateNormal];
-    
+
     NSString *metronomeOn = [prefs stringForKey:@"metronome"];
     if ([metronomeOn isEqual: @"YES"])
         [metronomeSwitch setTitle:[NSString stringWithFormat: @"          On"] forState:UIControlStateNormal];
@@ -101,13 +95,6 @@
     [precisionTimingSwitch setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [precisionTimingSwitch setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     
-/*    precisionContrastSwitch.layer.borderColor = [UIColor redColor].CGColor;
-    [[precisionContrastSwitch layer] setCornerRadius:8.0f];
-    [[precisionContrastSwitch layer] setBorderWidth:3.0f];
-    [precisionContrastSwitch setBackgroundColor:[UIColor blackColor]];
-    [precisionContrastSwitch setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [precisionContrastSwitch setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];*/
-    
     delayStartSwitch.layer.borderColor = [UIColor redColor].CGColor;
     [[delayStartSwitch layer] setCornerRadius:8.0f];
     [[delayStartSwitch layer] setBorderWidth:3.0f];
@@ -149,7 +136,6 @@
     [backgroundRectangle setBackgroundColor:[UIColor blackColor]];
 }
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -177,21 +163,6 @@
     
 }
 
-/*
-- (IBAction)precisionContrastSwitch:(id)sender {
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *precisionContrast = [prefs stringForKey:@"precisionContrast"];
-    
-    if ([precisionContrast isEqual: @"NO"]){
-        [prefs setObject:@"YES" forKey:@"precisionContrast"];
-        [precisionContrastSwitch setTitle:[NSString stringWithFormat: @"          On"] forState:UIControlStateNormal];
-    }
-    else{
-        [prefs setObject:@"NO" forKey:@"precisionContrast"];
-        [precisionContrastSwitch setTitle:[NSString stringWithFormat: @"  Off"] forState:UIControlStateNormal];
-    }
-    
-}*/
 
 - (IBAction)precisionTimingSwitch:(id)sender {
     
@@ -207,9 +178,6 @@
         [precisionTimingSwitch setTitle:[NSString stringWithFormat: @"  Off"] forState:UIControlStateNormal];
         
     }
-    
-    //NSLog(@"tenthSeconds = %@",[prefs stringForKey:@"precisionTiming"]);
-    
 }
 
 
@@ -225,7 +193,6 @@
     else{
         [prefs setObject:@"NO" forKey:@"delayStart"];
         [delayStartSwitch setTitle:[NSString stringWithFormat: @"  Off"] forState:UIControlStateNormal];
-        
     }
 }
 
@@ -242,7 +209,6 @@
     else{
         [prefs setObject:@"NO" forKey:@"preflash"];
         [preflashSwitch setTitle:[NSString stringWithFormat: @"  Off"] forState:UIControlStateNormal];
-        
     }
 }
 
@@ -259,7 +225,6 @@
     else{
         [prefs setObject:@"LO" forKey:@"brightness"];
         [brightnessSwitch setTitle:[NSString stringWithFormat: @"  Lo"] forState:UIControlStateNormal];
-        
     }
 }
 

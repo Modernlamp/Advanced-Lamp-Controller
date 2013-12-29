@@ -19,7 +19,6 @@
 @property (weak, nonatomic) id <FlipsideViewControllerDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UIButton *metronomeSwitch;
-//@property (weak, nonatomic) IBOutlet UIButton *precisionContrastSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *precisionTimingSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *delayStartSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *preflashSwitch;
