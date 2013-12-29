@@ -25,6 +25,10 @@
 		E3AEB4D4186FA0EC00909E54 /* fStopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AEB4D2186FA0EC00909E54 /* fStopViewController.m */; };
 		E3AEB4D5186FA0EC00909E54 /* fStopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3AEB4D3186FA0EC00909E54 /* fStopViewController.xib */; };
 		E3AEB4DA186FA71F00909E54 /* BLE.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AEB4D8186FA71F00909E54 /* BLE.m */; };
+		E3AEB4DF186FADB400909E54 /* Beep.aiff in Resources */ = {isa = PBXBuildFile; fileRef = E3AEB4DB186FADB400909E54 /* Beep.aiff */; };
+		E3AEB4E0186FADB400909E54 /* ModernEnlargerLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E3AEB4DC186FADB400909E54 /* ModernEnlargerLogo.png */; };
+		E3AEB4E1186FADB400909E54 /* Tink.aiff in Resources */ = {isa = PBXBuildFile; fileRef = E3AEB4DD186FADB400909E54 /* Tink.aiff */; };
+		E3AEB4E5186FAE6500909E54 /* Rectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = E3AEB4E4186FAE6500909E54 /* Rectangle.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +69,10 @@
 		E3AEB4D7186FA71F00909E54 /* BLE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLE.h; sourceTree = "<group>"; };
 		E3AEB4D8186FA71F00909E54 /* BLE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLE.m; sourceTree = "<group>"; };
 		E3AEB4D9186FA71F00909E54 /* BLEDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEDefines.h; sourceTree = "<group>"; };
+		E3AEB4DB186FADB400909E54 /* Beep.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Beep.aiff; sourceTree = "<group>"; };
+		E3AEB4DC186FADB400909E54 /* ModernEnlargerLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ModernEnlargerLogo.png; sourceTree = "<group>"; };
+		E3AEB4DD186FADB400909E54 /* Tink.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Tink.aiff; sourceTree = "<group>"; };
+		E3AEB4E4186FAE6500909E54 /* Rectangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rectangle.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +144,7 @@
 				E3AEB4D2186FA0EC00909E54 /* fStopViewController.m */,
 				E3AEB4D3186FA0EC00909E54 /* fStopViewController.xib */,
 				E3088A20186F944F0049B91A /* Images.xcassets */,
+				E3AEB4E3186FADE000909E54 /* Images and Sounds */,
 				E3088A0C186F944F0049B91A /* Supporting Files */,
 			);
 			path = "Advanced Lamp Controller";
@@ -179,6 +188,17 @@
 			);
 			name = BLE;
 			path = "Advanced Lamp Controller/BLE";
+			sourceTree = "<group>";
+		};
+		E3AEB4E3186FADE000909E54 /* Images and Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				E3AEB4E4186FAE6500909E54 /* Rectangle.png */,
+				E3AEB4DC186FADB400909E54 /* ModernEnlargerLogo.png */,
+				E3AEB4DD186FADB400909E54 /* Tink.aiff */,
+				E3AEB4DB186FADB400909E54 /* Beep.aiff */,
+			);
+			name = "Images and Sounds";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,8 +278,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3088A21186F944F0049B91A /* Images.xcassets in Resources */,
+				E3AEB4E0186FADB400909E54 /* ModernEnlargerLogo.png in Resources */,
 				E3088A10186F944F0049B91A /* InfoPlist.strings in Resources */,
 				E3088A19186F944F0049B91A /* Main.storyboard in Resources */,
+				E3AEB4E1186FADB400909E54 /* Tink.aiff in Resources */,
+				E3AEB4E5186FAE6500909E54 /* Rectangle.png in Resources */,
+				E3AEB4DF186FADB400909E54 /* Beep.aiff in Resources */,
 				E3AEB4D5186FA0EC00909E54 /* fStopViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
