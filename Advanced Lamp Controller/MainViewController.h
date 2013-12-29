@@ -61,11 +61,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *timeDownButton;
 @property (weak, nonatomic) IBOutlet UIButton *ContrastUpButton;
 @property (weak, nonatomic) IBOutlet UIButton *ContrastDownButton;
-@property (weak, nonatomic) IBOutlet UIButton *timeUp;
-@property (weak, nonatomic) IBOutlet UIButton *timeDown;
 @property (weak, nonatomic) IBOutlet UIButton *backgroundRectangle1;
 @property (weak, nonatomic) IBOutlet UIButton *backgroundRectangle2;
-//@property (weak, nonatomic) IBOutlet UIButton *backgroundRectangle3;
 @property (weak, nonatomic) IBOutlet UIImageView *logoView;
 
 

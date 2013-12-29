@@ -29,6 +29,7 @@
 		E3AEB4E0186FADB400909E54 /* ModernEnlargerLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E3AEB4DC186FADB400909E54 /* ModernEnlargerLogo.png */; };
 		E3AEB4E1186FADB400909E54 /* Tink.aiff in Resources */ = {isa = PBXBuildFile; fileRef = E3AEB4DD186FADB400909E54 /* Tink.aiff */; };
 		E3AEB4E5186FAE6500909E54 /* Rectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = E3AEB4E4186FAE6500909E54 /* Rectangle.png */; };
+		E3AEB4E7186FB8A400909E54 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E3AEB4E6186FB8A400909E54 /* Default.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		E3AEB4DC186FADB400909E54 /* ModernEnlargerLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ModernEnlargerLogo.png; sourceTree = "<group>"; };
 		E3AEB4DD186FADB400909E54 /* Tink.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Tink.aiff; sourceTree = "<group>"; };
 		E3AEB4E4186FAE6500909E54 /* Rectangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rectangle.png; sourceTree = "<group>"; };
+		E3AEB4E6186FB8A400909E54 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 		E3AEB4E3186FADE000909E54 /* Images and Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				E3AEB4E6186FB8A400909E54 /* Default.png */,
 				E3AEB4E4186FAE6500909E54 /* Rectangle.png */,
 				E3AEB4DC186FADB400909E54 /* ModernEnlargerLogo.png */,
 				E3AEB4DD186FADB400909E54 /* Tink.aiff */,
@@ -278,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3088A21186F944F0049B91A /* Images.xcassets in Resources */,
+				E3AEB4E7186FB8A400909E54 /* Default.png in Resources */,
 				E3AEB4E0186FADB400909E54 /* ModernEnlargerLogo.png in Resources */,
 				E3088A10186F944F0049B91A /* InfoPlist.strings in Resources */,
 				E3088A19186F944F0049B91A /* Main.storyboard in Resources */,
