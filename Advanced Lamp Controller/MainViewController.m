@@ -169,7 +169,6 @@
 #pragma mark - Actions
 
 
-
 #pragma mark - Flipside View
 
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller
@@ -179,17 +178,16 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showAlternate"]) {
+    if ([[segue identifier] isEqualToString:@"showFlipSide"]) {
         [[segue destinationViewController] setDelegate:self];
     }
 }
+
 
 #pragma mark - fStop View
 
 - (IBAction)fStopSettingsButton:(id)sender
 {
-    
-    
     fStopViewController *controller = [[fStopViewController alloc] initWithNibName:@"fStopViewController" bundle:nil];
     controller.delegate = self;
     controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
