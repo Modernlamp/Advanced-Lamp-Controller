@@ -11,11 +11,64 @@
 #import "FlipsideViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "fStopViewController.h"
+#import "BLE.h"
+
+
 
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate, fStopViewControllerDelegate>
+{
+    float contrastInUnits;
+    float timeInSeconds;
+    int timeInTenthSeconds;
+    int integerContrastInUnits;
+    
+    int redOnOff;
+    int countToTen;
+    int focusOnOff;
+    int timeCountDown;
+    int brightnessMultiplier;
+    
+    bool exposeButtonOnOff;
+    id timer;
+    id holdTimer;
+    int blueBrightness;
+    int greenBrightness;
+    bool timeInTenthsYesNo;
+    
+    NSMutableString *timeInSecondsString;
+    NSMutableString *greenBrightnessString;
+    NSMutableString *blueBrightnessString;
+    
+    AVAudioPlayer *audioTinkPlayer;
+    AVAudioPlayer *audioBeepPlayer;
+    BLE *bleShield;
+    
+    IBOutlet UILabel *timeField;
+    IBOutlet UILabel *contrastField;
+}
+
 
 
 @property (weak, nonatomic) IBOutlet UIButton *fStopSettingsButton;
+@property (weak, nonatomic) IBOutlet UIButton *preferenceSettingsButton;
+@property (weak, nonatomic) IBOutlet UIButton *connectButton;
+@property (weak, nonatomic) IBOutlet UIButton *redButton;
+@property (weak, nonatomic) IBOutlet UIButton *exposeButton;
+@property (weak, nonatomic) IBOutlet UIButton *focusButton;
+@property (weak, nonatomic) IBOutlet UIButton *resetButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+@property (weak, nonatomic) IBOutlet UIButton *timeUpButton;
+@property (weak, nonatomic) IBOutlet UIButton *timeDownButton;
+@property (weak, nonatomic) IBOutlet UIButton *ContrastUpButton;
+@property (weak, nonatomic) IBOutlet UIButton *ContrastDownButton;
+@property (weak, nonatomic) IBOutlet UIButton *timeUp;
+@property (weak, nonatomic) IBOutlet UIButton *timeDown;
+@property (weak, nonatomic) IBOutlet UIButton *backgroundRectangle1;
+@property (weak, nonatomic) IBOutlet UIButton *backgroundRectangle2;
+@property (weak, nonatomic) IBOutlet UIButton *backgroundRectangle3;
+@property (weak, nonatomic) IBOutlet UIImageView *logoView;
+
+
 
 
 @end

@@ -24,6 +24,7 @@
 		E3088A34186F944F0049B91A /* Advanced_Lamp_ControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E3088A33186F944F0049B91A /* Advanced_Lamp_ControllerTests.m */; };
 		E3AEB4D4186FA0EC00909E54 /* fStopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AEB4D2186FA0EC00909E54 /* fStopViewController.m */; };
 		E3AEB4D5186FA0EC00909E54 /* fStopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3AEB4D3186FA0EC00909E54 /* fStopViewController.xib */; };
+		E3AEB4DA186FA71F00909E54 /* BLE.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AEB4D8186FA71F00909E54 /* BLE.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,9 @@
 		E3AEB4D1186FA0EC00909E54 /* fStopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fStopViewController.h; sourceTree = "<group>"; };
 		E3AEB4D2186FA0EC00909E54 /* fStopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fStopViewController.m; sourceTree = "<group>"; };
 		E3AEB4D3186FA0EC00909E54 /* fStopViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = fStopViewController.xib; sourceTree = "<group>"; };
+		E3AEB4D7186FA71F00909E54 /* BLE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLE.h; sourceTree = "<group>"; };
+		E3AEB4D8186FA71F00909E54 /* BLE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLE.m; sourceTree = "<group>"; };
+		E3AEB4D9186FA71F00909E54 /* BLEDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEDefines.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 		E3088A04186F944F0049B91A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E3AEB4D6186FA71F00909E54 /* BLE */,
 				E3088A05186F944F0049B91A /* Foundation.framework */,
 				E3088A07186F944F0049B91A /* CoreGraphics.framework */,
 				E3088A09186F944F0049B91A /* UIKit.framework */,
@@ -163,6 +168,17 @@
 				E3088A30186F944F0049B91A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E3AEB4D6186FA71F00909E54 /* BLE */ = {
+			isa = PBXGroup;
+			children = (
+				E3AEB4D7186FA71F00909E54 /* BLE.h */,
+				E3AEB4D8186FA71F00909E54 /* BLE.m */,
+				E3AEB4D9186FA71F00909E54 /* BLEDefines.h */,
+			);
+			name = BLE;
+			path = "Advanced Lamp Controller/BLE";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +282,7 @@
 				E3088A16186F944F0049B91A /* AppDelegate.m in Sources */,
 				E3AEB4D4186FA0EC00909E54 /* fStopViewController.m in Sources */,
 				E3088A1C186F944F0049B91A /* MainViewController.m in Sources */,
+				E3AEB4DA186FA71F00909E54 /* BLE.m in Sources */,
 				E3088A1F186F944F0049B91A /* FlipsideViewController.m in Sources */,
 				E3088A12186F944F0049B91A /* main.m in Sources */,
 			);

@@ -18,6 +18,18 @@
 
 @property (weak, nonatomic) id <FlipsideViewControllerDelegate> delegate;
 
-- (IBAction)done:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *metronomeSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *precisionContrastSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *precisionTimingSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *delayStartSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *preflashSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *brightnessSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *backgroundRectangle;
+@property (weak, nonatomic) IBOutlet UIButton *externalControlSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *footSwitchSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *doneButton;
+
+
+//- (IBAction)done:(id)sender;
 
 @end
