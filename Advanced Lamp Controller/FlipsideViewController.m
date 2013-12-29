@@ -20,7 +20,7 @@
 @synthesize doneButton;
 @synthesize metronomeSwitch;
 @synthesize precisionTimingSwitch;
-@synthesize precisionContrastSwitch;
+//@synthesize precisionContrastSwitch;
 @synthesize delayStartSwitch;
 @synthesize backgroundRectangle;
 @synthesize brightnessSwitch;
@@ -43,10 +43,10 @@
         [precisionTimingSwitch setTitle:[NSString stringWithFormat: @"          On"] forState:UIControlStateNormal];
     else [precisionTimingSwitch setTitle:[NSString stringWithFormat: @"  Off"] forState:UIControlStateNormal];
     
-    NSString *precionContrast = [prefs stringForKey:@"precisionContrast"];
-    if ([precionContrast isEqual: @"YES"])
-        [precisionContrastSwitch setTitle:[NSString stringWithFormat: @"          On"] forState:UIControlStateNormal];
-    else [precisionContrastSwitch setTitle:[NSString stringWithFormat: @"  Off"] forState:UIControlStateNormal];
+//    NSString *precionContrast = [prefs stringForKey:@"precisionContrast"];
+//    if ([precionContrast isEqual: @"YES"])
+//        [precisionContrastSwitch setTitle:[NSString stringWithFormat: @"          On"] forState:UIControlStateNormal];
+ //   else [precisionContrastSwitch setTitle:[NSString stringWithFormat: @"  Off"] forState:UIControlStateNormal];
     
     NSString *metronomeOn = [prefs stringForKey:@"metronome"];
     if ([metronomeOn isEqual: @"YES"])
@@ -101,12 +101,12 @@
     [precisionTimingSwitch setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [precisionTimingSwitch setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     
-    precisionContrastSwitch.layer.borderColor = [UIColor redColor].CGColor;
+/*    precisionContrastSwitch.layer.borderColor = [UIColor redColor].CGColor;
     [[precisionContrastSwitch layer] setCornerRadius:8.0f];
     [[precisionContrastSwitch layer] setBorderWidth:3.0f];
     [precisionContrastSwitch setBackgroundColor:[UIColor blackColor]];
     [precisionContrastSwitch setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [precisionContrastSwitch setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
+    [precisionContrastSwitch setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];*/
     
     delayStartSwitch.layer.borderColor = [UIColor redColor].CGColor;
     [[delayStartSwitch layer] setCornerRadius:8.0f];
@@ -177,7 +177,7 @@
     
 }
 
-
+/*
 - (IBAction)precisionContrastSwitch:(id)sender {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *precisionContrast = [prefs stringForKey:@"precisionContrast"];
@@ -191,7 +191,7 @@
         [precisionContrastSwitch setTitle:[NSString stringWithFormat: @"  Off"] forState:UIControlStateNormal];
     }
     
-}
+}*/
 
 - (IBAction)precisionTimingSwitch:(id)sender {
     

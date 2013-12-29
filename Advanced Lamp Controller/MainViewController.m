@@ -43,6 +43,7 @@
     bleShield.delegate = self;
     
     // Initialize variables
+    contrastValueTimesTen = 25;
     timeInSeconds = 0;
     contrastInUnits = 0;
     redOnOff = 0;
@@ -54,7 +55,6 @@
     // Initialize User Preferences
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     [prefs setObject:@"NO" forKey:@"metronome"];
-    [prefs setObject:@"NO" forKey:@"precisionContrast"];
     [prefs setObject:@"NO" forKey:@"precisionTiming"];
     [prefs setObject:@"NO" forKey:@"delayStartOn"];
     [prefs setObject:@"LO" forKey:@"redDimmer"];
@@ -190,9 +190,19 @@
             
             if ([delayStartOn isEqual: @"YES"]){
                 holdTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(bleShieldSendData:) userInfo:nil repeats:NO];
+                
+                timeCountDown = timeInTenthSeconds;
+                countToTen = 10;
+                [self timerTenthTick:nil];
+
                 [self bleShieldSendFiveSecRed:nil];}
             
             else{
+                
+                timeCountDown = timeInTenthSeconds;
+                countToTen = 10;
+                [self timerTenthTick:nil];
+
                 [self bleShieldSendData:nil];}
         }
         else{
@@ -229,11 +239,6 @@
     NSString *brightness = [prefs stringForKey:@"brightness"];
     NSString *preflash = [prefs stringForKey:@"preflash"];
     
-    timeCountDown = timeInTenthSeconds;
-    countToTen = 10;
-    [self timerTenthTick:nil];
-    
-    
     if ([brightness isEqual: @"HI"]){brightnessMultiplier = 51;}
     else {brightnessMultiplier = 12;}
     
@@ -241,14 +246,14 @@
     
     
     // Calculate the Green LED Brightness and format the greenBrightness string properly
-    greenBrightness = floor(((5-contrastInUnits)*brightnessMultiplier) + .5);
+    greenBrightness = floor(((5-((float)contrastValueTimesTen)/10)*brightnessMultiplier) + .5);
     if (greenBrightness<10)greenBrightnessString = [NSMutableString stringWithFormat:@"00%i", greenBrightness];
     if (greenBrightness>=10 && greenBrightness<100) greenBrightnessString = [NSMutableString stringWithFormat:@"0%i", greenBrightness];
     if (greenBrightness>=100 && greenBrightness<1000) greenBrightnessString = [NSMutableString stringWithFormat:@"%i", greenBrightness];
     
     
     // Calculate the Blue LED Brightness and format the blueBrightness string properly
-    blueBrightness = floor((contrastInUnits*brightnessMultiplier) + .5);
+    blueBrightness = floor(((((float)contrastValueTimesTen)/10)*brightnessMultiplier) + .5);
     if (blueBrightness<10)blueBrightnessString = [NSMutableString stringWithFormat:@"00%i", blueBrightness];
     if (blueBrightness>=10 && blueBrightness<100) blueBrightnessString = [NSMutableString stringWithFormat:@"0%i", blueBrightness];
     if (blueBrightness>=100 && blueBrightness<1000) blueBrightnessString = [NSMutableString stringWithFormat:@"%i", blueBrightness];
@@ -285,8 +290,6 @@
     [bleShield write:d];
     
 }
-
-
 
 - (void)timerTenthTick:(id)sender{    /* This is where the countdown occurs.  You arrive here when a data packet is
                                        received from the Arduino. These data packets arrive every 0.1s as countdown
@@ -330,132 +333,32 @@
     }
 }
 
-
-
 - (IBAction)contrastUp:(id)sender { // This action occurs when the UP CONTRAST button is pressed
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *precisionContrast = [prefs stringForKey:@"precisionContrast"];
     NSString *externalControl = [prefs stringForKey:@"externalControl"];
     
-    if ([externalControl isEqual: @"OFF"]){
-        if ([precisionContrast isEqual: @"NO"]){
-            integerContrastInUnits = contrastInUnits*10;
-            if ((integerContrastInUnits % 5) != 0){
-                contrastInUnits = (integerContrastInUnits+5)/5;
-                contrastInUnits = contrastInUnits/2;
-            }
-            else {
-                integerContrastInUnits=contrastInUnits*10;
-                integerContrastInUnits=integerContrastInUnits+5;
-                contrastInUnits=(float)integerContrastInUnits/10;
-            }
-        }
-        else{
-            integerContrastInUnits=contrastInUnits*10;
-            integerContrastInUnits=integerContrastInUnits+1;
-            contrastInUnits=(float)integerContrastInUnits/10;
-        }
-        
-        if (contrastInUnits > 5){ contrastInUnits = 5;}
-        
-        // Format the contrastField text string properly for display
-        integerContrastInUnits = contrastInUnits*10;
-        if (integerContrastInUnits%10 == 0){[contrastField setText:[NSString stringWithFormat: @"%1.0f",(float) integerContrastInUnits/10]];}
-        else{ [contrastField setText:[NSString stringWithFormat: @"%1.1f", (float) integerContrastInUnits/10]];}
-    }
     
-    else{
-        if ([precisionContrast isEqual: @"NO"]){
-            integerContrastInUnits = contrastInUnits*10;
-            if ((integerContrastInUnits % 5) != 0){
-                contrastInUnits = (integerContrastInUnits+5)/5;
-                contrastInUnits = contrastInUnits/2;
-            }
-            else {
-                integerContrastInUnits=contrastInUnits*10;
-                integerContrastInUnits=integerContrastInUnits+5;
-                contrastInUnits=(float)integerContrastInUnits/10;
-            }
-        }
-        else{
-            integerContrastInUnits=contrastInUnits*10;
-            integerContrastInUnits=integerContrastInUnits+1;
-            contrastInUnits=(float)integerContrastInUnits/10;
-        }
-        if (contrastInUnits > 5) contrastInUnits = 5;
-        
-        // Format the contrastField text string properly for display
-        integerContrastInUnits = contrastInUnits*10;
-        if (integerContrastInUnits%10 == 0)[contrastField setText:[NSString stringWithFormat: @"%1.0f", contrastInUnits]];
-        else [contrastField setText:[NSString stringWithFormat: @"%1.1f", contrastInUnits]];
-        [self bleShieldSendData:nil];
-        [exposeButton setTitle:@"External" forState:UIControlStateNormal];
-    }
+    contrastValueTimesTen = contrastValueTimesTen + 1;
+    if (contrastValueTimesTen > 50) contrastValueTimesTen = 50;
+    if (contrastValueTimesTen % 10 == 0)[contrastField setText:[NSString stringWithFormat: @"%1.0f", (float)contrastValueTimesTen/10]];
+    else [contrastField setText:[NSString stringWithFormat: @"%1.1f", (float)contrastValueTimesTen/10]];
+
+    if([externalControl isEqual:@"ON"]) [self bleShieldSendData:nil];
 }
 
 
 - (IBAction)contrastDown:(id)sender { // This action occurs when the Down CONTRAST button is pressed
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *precisionContrast = [prefs stringForKey:@"precisionContrast"];
     NSString *externalControl = [prefs stringForKey:@"externalControl"];
     
-    if ([externalControl isEqual: @"OFF"]){
-        if ([precisionContrast isEqual: @"NO"]){
-            integerContrastInUnits = contrastInUnits*10;
-            if ((integerContrastInUnits % 5) != 0){
-                contrastInUnits = integerContrastInUnits/5;
-                contrastInUnits = contrastInUnits/2;
-            }
-            else{
-                integerContrastInUnits=contrastInUnits*10;
-                integerContrastInUnits=integerContrastInUnits-5;
-                contrastInUnits=(float)integerContrastInUnits/10;
-            }
-        }
-        else{
-            integerContrastInUnits=contrastInUnits*10;
-            integerContrastInUnits=integerContrastInUnits-1;
-            contrastInUnits=(float)integerContrastInUnits/10;
-        }
-        
-        if (contrastInUnits < 0) contrastInUnits = 0;
-        
-        // Format the contrastField text string properly for display
-        integerContrastInUnits=contrastInUnits*10;
-        if (integerContrastInUnits%10 == 0)[contrastField setText:[NSString stringWithFormat: @"%1.0f", contrastInUnits]];
-        else [contrastField setText:[NSString stringWithFormat: @"%1.1f", contrastInUnits]];
-    }
+    contrastValueTimesTen = contrastValueTimesTen - 1;
+    if (contrastValueTimesTen < 0) contrastValueTimesTen = 0;
+    if (contrastValueTimesTen % 10 == 0)[contrastField setText:[NSString stringWithFormat: @"%1.0f", (float)contrastValueTimesTen/10]];
+    else [contrastField setText:[NSString stringWithFormat: @"%1.1f", (float)contrastValueTimesTen/10]];
     
-    else{
-        if ([precisionContrast isEqual: @"NO"]){
-            integerContrastInUnits = contrastInUnits*10;
-            if ((integerContrastInUnits % 5) != 0){
-                contrastInUnits = integerContrastInUnits/5;
-                contrastInUnits = contrastInUnits/2;
-            }
-            else{
-                integerContrastInUnits=contrastInUnits*10;
-                integerContrastInUnits=integerContrastInUnits-5;
-                contrastInUnits=(float)integerContrastInUnits/10;
-            }
-        }
-        else{
-            integerContrastInUnits=contrastInUnits*10;
-            integerContrastInUnits=integerContrastInUnits-1;
-            contrastInUnits=(float)integerContrastInUnits/10;
-        }
-        
-        if (contrastInUnits < 0) contrastInUnits = 0;
-        
-        // Format the contrastField text string properly for display
-        integerContrastInUnits=contrastInUnits*10;
-        if (integerContrastInUnits%10 == 0)[contrastField setText:[NSString stringWithFormat: @"%1.0f", contrastInUnits]];
-        else [contrastField setText:[NSString stringWithFormat: @"%1.1f", contrastInUnits]];
-        [self bleShieldSendData:nil];
-        [exposeButton setTitle:@"External" forState:UIControlStateNormal];
-    }
+    if([externalControl isEqual:@"ON"])[self bleShieldSendData:nil];
 }
 
 
@@ -478,8 +381,6 @@
     holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.06 target:self selector:@selector(timeDown:) userInfo:nil repeats:YES];
     [holdTimer fire];
 }
-
-
 
 - (IBAction)timeChangeStop:(id)sender {
     [holdTimer invalidate];
@@ -655,7 +556,6 @@
     }
 }
 
-
 - (IBAction)resetButtonPressed:(id)sender {
     
     NSString *s;
@@ -667,8 +567,8 @@
     
     if ([externalControl isEqual: @"OFF"]){
         // Set Contrast, Time, and Blue brightness to 0, green brightness to 255
-        contrastInUnits = 0;
-        [contrastField setText:[NSString stringWithFormat: @"%1.0f", contrastInUnits]];
+        contrastValueTimesTen = 25;
+        [contrastField setText:[NSString stringWithFormat: @"2.5"]];
         timeInTenthSeconds = 0;
         timeCountDown = 0;
         timeInSecondsString = [NSMutableString stringWithFormat: @"0000"];
@@ -823,29 +723,22 @@
     NSString *precisionTiming = [prefs stringForKey:@"precisionTiming"];
     NSString *externalControl = [prefs stringForKey:@"externalControl"];
     NSString *footSwitch = [prefs stringForKey:@"footSwitch"];
-    NSString *brightness = [prefs stringForKey:@"brightness"];
-    NSString *preflash = [prefs stringForKey:@"preflash"];
-    
+
     //send the external control code
     NSString *s;
     NSData *d;
     if ([externalControl isEqual: @"ON"]){
         
-        // Set Contrast, Time, and Blue brightness to 0, green brightness to 255
-        contrastInUnits = 0;
-        [contrastField setText:[NSString stringWithFormat: @"%1.0f", contrastInUnits]];
+        // Send Contrast and Time=0
         timeInTenthSeconds = 0;
         timeCountDown = 0;
         timeInSecondsString = [NSMutableString stringWithFormat: @"0000"];
-        [timeField setText:[NSString stringWithFormat: @"%i", timeInTenthSeconds]];
-        greenBrightness = 255;
-        blueBrightness = 0;
         
-        if ([brightness isEqual: @"HI"])s = [NSString stringWithFormat:@"0070000000255000\r\n"];
-        else s = [NSString stringWithFormat:@"0070000000060000\r\n"];
-        if ([preflash isEqual: @"YES"])s = [NSString stringWithFormat:@"0070000000010000\r\n"];
+        s = [NSString stringWithFormat:@"0070000000000000\r\n"];
         d = [s dataUsingEncoding:NSUTF8StringEncoding];
         [bleShield write:d];
+
+        [self bleShieldSendData:nil];
         
         [exposeButton setTitle:@"External" forState:UIControlStateNormal];
         

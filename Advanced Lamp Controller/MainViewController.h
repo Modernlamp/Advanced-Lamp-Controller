@@ -19,6 +19,7 @@
 {
     float contrastInUnits;
     float timeInSeconds;
+    int contrastValueTimesTen;
     int timeInTenthSeconds;
     int integerContrastInUnits;
     
