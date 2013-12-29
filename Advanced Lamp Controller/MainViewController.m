@@ -7,12 +7,19 @@
 //
 
 #import "MainViewController.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 @interface MainViewController ()
 
 @end
 
 @implementation MainViewController
+
+
+@synthesize fStopSettingsButton;
+
+
 
 - (void)viewDidLoad
 {
@@ -39,5 +46,23 @@
         [[segue destinationViewController] setDelegate:self];
     }
 }
+
+#pragma mark - fStop View
+
+- (IBAction)fStopSettingsButton:(id)sender
+{
+    
+    
+    fStopViewController *controller = [[fStopViewController alloc] initWithNibName:@"fStopViewController" bundle:nil];
+    controller.delegate = self;
+    controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)fStopViewControllerDidFinish:(fStopViewController *)controller{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //[audioBeepPlayer play];
+}
+
 
 @end

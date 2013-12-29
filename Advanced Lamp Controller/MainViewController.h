@@ -6,8 +6,17 @@
 //  Copyright (c) 2013 Modern Enlarger Lamps. All rights reserved.
 //
 
-#import "FlipsideViewController.h"
 
-@interface MainViewController : UIViewController <FlipsideViewControllerDelegate>
+#import <UIKit/UIKit.h>
+#import "FlipsideViewController.h"
+#import <AVFoundation/AVFoundation.h>
+#import "fStopViewController.h"
+
+@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, fStopViewControllerDelegate>
+
+
+@property (weak, nonatomic) IBOutlet UIButton *fStopSettingsButton;
+
 
 @end
+

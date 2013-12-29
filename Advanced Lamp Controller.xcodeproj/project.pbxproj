@@ -22,6 +22,8 @@
 		E3088A2A186F944F0049B91A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3088A09186F944F0049B91A /* UIKit.framework */; };
 		E3088A32186F944F0049B91A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E3088A30186F944F0049B91A /* InfoPlist.strings */; };
 		E3088A34186F944F0049B91A /* Advanced_Lamp_ControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E3088A33186F944F0049B91A /* Advanced_Lamp_ControllerTests.m */; };
+		E3AEB4D4186FA0EC00909E54 /* fStopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AEB4D2186FA0EC00909E54 /* fStopViewController.m */; };
+		E3AEB4D5186FA0EC00909E54 /* fStopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3AEB4D3186FA0EC00909E54 /* fStopViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,9 @@
 		E3088A2F186F944F0049B91A /* Advanced Lamp ControllerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Advanced Lamp ControllerTests-Info.plist"; sourceTree = "<group>"; };
 		E3088A31186F944F0049B91A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E3088A33186F944F0049B91A /* Advanced_Lamp_ControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Advanced_Lamp_ControllerTests.m; sourceTree = "<group>"; };
+		E3AEB4D1186FA0EC00909E54 /* fStopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fStopViewController.h; sourceTree = "<group>"; };
+		E3AEB4D2186FA0EC00909E54 /* fStopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fStopViewController.m; sourceTree = "<group>"; };
+		E3AEB4D3186FA0EC00909E54 /* fStopViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = fStopViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +127,9 @@
 				E3088A1B186F944F0049B91A /* MainViewController.m */,
 				E3088A1D186F944F0049B91A /* FlipsideViewController.h */,
 				E3088A1E186F944F0049B91A /* FlipsideViewController.m */,
+				E3AEB4D1186FA0EC00909E54 /* fStopViewController.h */,
+				E3AEB4D2186FA0EC00909E54 /* fStopViewController.m */,
+				E3AEB4D3186FA0EC00909E54 /* fStopViewController.xib */,
 				E3088A20186F944F0049B91A /* Images.xcassets */,
 				E3088A0C186F944F0049B91A /* Supporting Files */,
 			);
@@ -236,6 +244,7 @@
 				E3088A21186F944F0049B91A /* Images.xcassets in Resources */,
 				E3088A10186F944F0049B91A /* InfoPlist.strings in Resources */,
 				E3088A19186F944F0049B91A /* Main.storyboard in Resources */,
+				E3AEB4D5186FA0EC00909E54 /* fStopViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3088A16186F944F0049B91A /* AppDelegate.m in Sources */,
+				E3AEB4D4186FA0EC00909E54 /* fStopViewController.m in Sources */,
 				E3088A1C186F944F0049B91A /* MainViewController.m in Sources */,
 				E3088A1F186F944F0049B91A /* FlipsideViewController.m in Sources */,
 				E3088A12186F944F0049B91A /* main.m in Sources */,
@@ -466,6 +476,7 @@
 				E3088A39186F944F0049B91A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E3088A3A186F944F0049B91A /* Build configuration list for PBXNativeTarget "Advanced Lamp ControllerTests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +485,7 @@
 				E3088A3C186F944F0049B91A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
