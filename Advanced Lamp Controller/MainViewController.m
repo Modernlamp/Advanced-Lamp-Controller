@@ -818,6 +818,71 @@
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *precisionTiming = [prefs stringForKey:@"precisionTiming"];
+    NSString *externalControl = [prefs stringForKey:@"externalControl"];
+    NSString *footSwitch = [prefs stringForKey:@"footSwitch"];
+    NSString *brightness = [prefs stringForKey:@"brightness"];
+    NSString *preflash = [prefs stringForKey:@"preflash"];
+    
+    //send the external control code
+    NSString *s;
+    NSData *d;
+    if ([externalControl isEqual: @"ON"]){
+        
+        // Set Contrast, Time, and Blue brightness to 0, green brightness to 255
+        contrastInUnits = 0;
+        [contrastField setText:[NSString stringWithFormat: @"%1.0f", contrastInUnits]];
+        timeInTenthSeconds = 0;
+        timeCountDown = 0;
+        timeInSecondsString = [NSMutableString stringWithFormat: @"0000"];
+        [timeField setText:[NSString stringWithFormat: @"%i", timeInTenthSeconds]];
+        greenBrightness = 255;
+        blueBrightness = 0;
+        
+        if ([brightness isEqual: @"HI"])s = [NSString stringWithFormat:@"0070000000255000\r\n"];
+        else s = [NSString stringWithFormat:@"0070000000060000\r\n"];
+        if ([preflash isEqual: @"YES"])s = [NSString stringWithFormat:@"0070000000010000\r\n"];
+        d = [s dataUsingEncoding:NSUTF8StringEncoding];
+        [bleShield write:d];
+        
+        [exposeButton setTitle:@"External" forState:UIControlStateNormal];
+        
+    }
+    else if ([footSwitch isEqual: @"ON"]){
+        s = [NSString stringWithFormat:@"0060000000000000\r\n"];
+        d = [s dataUsingEncoding:NSUTF8StringEncoding];
+        [bleShield write:d];
+        timeInTenthSeconds = 0;
+        timeCountDown = 0;
+        timeInSecondsString = [NSMutableString stringWithFormat: @"0000"];
+        [timeField setText:[NSString stringWithFormat: @"%i", timeInTenthSeconds]];
+        [exposeButton setTitle:@"Start" forState:UIControlStateNormal];
+        
+    }
+    else{
+        s = [NSString stringWithFormat:@"0050000000000000\r\n"];
+        d = [s dataUsingEncoding:NSUTF8StringEncoding];
+        [bleShield write:d];
+        [exposeButton setTitle:@"Start" forState:UIControlStateNormal];
+    }
+    
+    //format the timefield correctly when precisionTiming is changed
+    if (([precisionTiming isEqual: @"YES"]) && (timeInTenthSeconds <999))
+        [timeField setText:[NSString stringWithFormat: @"%i.%i", timeInTenthSeconds/10, timeInTenthSeconds % 10]];
+    else{
+        timeInTenthSeconds = timeInTenthSeconds/10;
+        timeInTenthSeconds = timeInTenthSeconds*10;
+        [timeField setText:[NSString stringWithFormat: @"%i", timeInTenthSeconds/10]];
+    }
+    
+    //set the timeInSecondsString properly to reflect the updated timeInTenthSeconds
+    if (timeInTenthSeconds < 10) timeInSecondsString = [NSMutableString stringWithFormat: @"000%i", timeInTenthSeconds];
+    if (timeInTenthSeconds >=10 && timeInSeconds <100) timeInSecondsString = [NSMutableString stringWithFormat: @"00%i", timeInTenthSeconds];
+    if (timeInTenthSeconds >=100 && timeInTenthSeconds <1000) timeInSecondsString = [NSMutableString stringWithFormat: @"0%i", timeInTenthSeconds];
+    if (timeInTenthSeconds >=1000) timeInSecondsString = [NSMutableString stringWithFormat: @"%i", timeInTenthSeconds];
+
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
