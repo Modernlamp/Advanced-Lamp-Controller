@@ -36,6 +36,8 @@
     int greenBrightness;
     bool timeInTenthsYesNo;
     
+    //
+    
     NSMutableString *timeInSecondsString;
     NSMutableString *greenBrightnessString;
     NSMutableString *blueBrightnessString;
