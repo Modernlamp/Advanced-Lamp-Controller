@@ -32,7 +32,6 @@
     int brightnessMultiplier;
     
     bool exposeButtonOnOff;
-    id timer;
     id holdTimer;
     int blueBrightness;
     int greenBrightness;

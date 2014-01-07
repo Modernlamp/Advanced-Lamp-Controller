@@ -340,22 +340,39 @@
     }
 }
 
-- (IBAction)contrastUp:(id)sender { // This action occurs when the UP CONTRAST button is pressed
-    
+- (IBAction)contrastChangeUpStart:(id)sender {//This action is taken when the Up contrast button is PRESSED.
+    holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(zipContrastUp:) userInfo:nil repeats:NO];
+    [self contrastUp:nil];
+}
+
+- (void)zipContrastUp:(id)sender{
+    holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.18 target:self selector:@selector(contrastUp:) userInfo:nil repeats:YES];
+    [holdTimer fire];
+}
+
+- (void)contrastUp:(id)sender {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *externalControl = [prefs stringForKey:@"externalControl"];
-    
     
     contrastValueTimesTen = contrastValueTimesTen + 1;
     if (contrastValueTimesTen > 50) contrastValueTimesTen = 50;
     if (contrastValueTimesTen % 10 == 0)[contrastField setText:[NSString stringWithFormat: @"%1.0f", (float)contrastValueTimesTen/10]];
     else [contrastField setText:[NSString stringWithFormat: @"%1.1f", (float)contrastValueTimesTen/10]];
-
+    
     if([externalControl isEqual:@"ON"]) [self bleShieldSendData:nil];
 }
 
+- (IBAction)contrastChangeDownStart:(id)sender {//This action is taken when the Up contrast button is PRESSED.
+    holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(zipContrastDown:) userInfo:nil repeats:NO];
+    [self contrastDown:nil];
+}
 
-- (IBAction)contrastDown:(id)sender { // This action occurs when the Down CONTRAST button is pressed
+- (void)zipContrastDown:(id)sender{
+    holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.18 target:self selector:@selector(contrastDown:) userInfo:nil repeats:YES];
+    [holdTimer fire];
+}
+
+- (void)contrastDown:(id)sender { // This action occurs when the Down CONTRAST button is pressed
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *externalControl = [prefs stringForKey:@"externalControl"];
@@ -399,7 +416,7 @@
     [holdTimer fire];
 }
 
-- (IBAction)timeChangeStop:(id)sender { // This action is taken when either the UP or Down seconds buttons are RELEASED.
+- (IBAction)zipChangeStop:(id)sender { // This action is taken when either the UP or Down seconds buttons are RELEASED.
     [holdTimer invalidate];
 }
 
@@ -571,7 +588,6 @@
         [exposeButton setTitle:@"Start" forState:UIControlStateNormal];
         [exposeButton setBackgroundColor:[UIColor blackColor]];
         if ([metronomeOn isEqual: @"YES"]) [audioBeepPlayer play];
-        [timer invalidate];
         
         // Reset FOCUS button (focusButton)
         focusOnOff = 0;

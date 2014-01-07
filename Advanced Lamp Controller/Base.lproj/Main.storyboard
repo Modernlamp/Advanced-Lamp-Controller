@@ -176,8 +176,8 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="timeChangeStop:" destination="rQl-PL-IFJ" eventType="touchUpInside" id="xTG-5O-n0k"/>
                                     <action selector="timeChangeUpStart:" destination="rQl-PL-IFJ" eventType="touchDown" id="3fV-nE-tEY"/>
+                                    <action selector="zipChangeStop:" destination="rQl-PL-IFJ" eventType="touchUpInside" id="UUZ-Fd-rIU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8d-qA-9Vp">
@@ -193,7 +193,7 @@
                                 </state>
                                 <connections>
                                     <action selector="timeChangeDownStart:" destination="rQl-PL-IFJ" eventType="touchDown" id="OKi-to-idT"/>
-                                    <action selector="timeChangeStop:" destination="rQl-PL-IFJ" eventType="touchUpInside" id="mBj-tL-Wzz"/>
+                                    <action selector="zipChangeStop:" destination="rQl-PL-IFJ" eventType="touchUpInside" id="zsO-A1-cNZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4I-HI-hFW">
@@ -208,7 +208,8 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="contrastUp:" destination="rQl-PL-IFJ" eventType="touchUpInside" id="gD8-73-BWs"/>
+                                    <action selector="contrastChangeUpStart:" destination="rQl-PL-IFJ" eventType="touchDown" id="2bd-Hx-mSx"/>
+                                    <action selector="zipChangeStop:" destination="rQl-PL-IFJ" eventType="touchUpInside" id="mPb-aa-pzJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U27-Dv-Ufn">
@@ -223,7 +224,8 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="contrastDown:" destination="rQl-PL-IFJ" eventType="touchUpInside" id="IkH-JD-hlM"/>
+                                    <action selector="contrastChangeDownStart:" destination="rQl-PL-IFJ" eventType="touchDown" id="58k-rD-7ml"/>
+                                    <action selector="zipChangeStop:" destination="rQl-PL-IFJ" eventType="touchUpInside" id="9sN-PT-q90"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X9S-GI-Img">
