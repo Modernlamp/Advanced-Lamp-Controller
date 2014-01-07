@@ -14,7 +14,9 @@
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller;
 @end
 
-@interface FlipsideViewController : UIViewController
+@interface FlipsideViewController : UIViewController{
+    float borderWidth;
+}
 
 @property (weak, nonatomic) id <FlipsideViewControllerDelegate> delegate;
 

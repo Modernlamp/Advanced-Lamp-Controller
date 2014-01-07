@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 
+
 @interface MainViewController ()
 
 @end
@@ -22,7 +23,7 @@
 @synthesize connectButton;
 @synthesize exposeButton;
 @synthesize focusButton;
-@synthesize redButton;
+@synthesize positionButton;
 @synthesize resetButton;
 @synthesize timeUpButton;
 @synthesize timeDownButton;
@@ -51,6 +52,9 @@
     exposeButtonOnOff = NO;
     countToTen = 0;
     timeInSecondsString = [NSMutableString stringWithFormat:@"0000"];
+    thinBorderWidth=2.0;
+    thickBorderWidth=8.0;
+    
     
     // Initialize User Preferences
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -79,82 +83,82 @@
     
     //Create custom buttons
     exposeButton.layer.borderColor = [UIColor redColor].CGColor;
-    [[exposeButton layer] setCornerRadius:14.0f];
-    [[exposeButton layer] setBorderWidth:8.0f];
+    [[exposeButton layer] setCornerRadius:12.0f];
+    [[exposeButton layer] setBorderWidth:6.0f];
     [exposeButton setBackgroundColor:[UIColor blackColor]];
     [exposeButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [exposeButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     
     focusButton.layer.borderColor = [UIColor redColor].CGColor;
     [[focusButton layer] setCornerRadius:8.0f];
-    [[focusButton layer] setBorderWidth:3.0f];
+    [[focusButton layer] setBorderWidth:thinBorderWidth];
     [focusButton setBackgroundColor:[UIColor blackColor]];
     [focusButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [focusButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     
     resetButton.layer.borderColor = [UIColor redColor].CGColor;
     [[resetButton layer] setCornerRadius:8.0f];
-    [[resetButton layer] setBorderWidth:3.0f];
+    [[resetButton layer] setBorderWidth:thinBorderWidth];
     [resetButton setBackgroundColor:[UIColor blackColor]];
     [resetButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [resetButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     
-    redButton.layer.borderColor = [UIColor redColor].CGColor;
-    [[redButton layer] setCornerRadius:8.0f];
-    [[redButton layer] setBorderWidth:3.0f];
-    [redButton setBackgroundColor:[UIColor blackColor]];
-    [redButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [redButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
+    positionButton.layer.borderColor = [UIColor redColor].CGColor;
+    [[positionButton layer] setCornerRadius:8.0f];
+    [[positionButton layer] setBorderWidth:thinBorderWidth];
+    [positionButton setBackgroundColor:[UIColor blackColor]];
+    [positionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [positionButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     
     timeUpButton.layer.borderColor = [UIColor redColor].CGColor;
     [[timeUpButton layer] setCornerRadius:8.0f];
-    [[timeUpButton layer] setBorderWidth:3.0f];
+    [[timeUpButton layer] setBorderWidth:thinBorderWidth];
     [timeUpButton setBackgroundColor:[UIColor blackColor]];
     [timeUpButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [timeUpButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     
     timeDownButton.layer.borderColor = [UIColor redColor].CGColor;
     [[timeDownButton layer] setCornerRadius:8.0f];
-    [[timeDownButton layer] setBorderWidth:3.0f];
+    [[timeDownButton layer] setBorderWidth:thinBorderWidth];
     [timeDownButton setBackgroundColor:[UIColor blackColor]];
     [timeDownButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [timeDownButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     
     ContrastUpButton.layer.borderColor = [UIColor redColor].CGColor;
     [[ContrastUpButton layer] setCornerRadius:8.0f];
-    [[ContrastUpButton layer] setBorderWidth:3.0f];
+    [[ContrastUpButton layer] setBorderWidth:thinBorderWidth];
     [ContrastUpButton setBackgroundColor:[UIColor blackColor]];
     [ContrastUpButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [ContrastUpButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     
     ContrastDownButton.layer.borderColor = [UIColor redColor].CGColor;
     [[ContrastDownButton layer] setCornerRadius:8.0f];
-    [[ContrastDownButton layer] setBorderWidth:3.0f];
+    [[ContrastDownButton layer] setBorderWidth:thinBorderWidth];
     [ContrastDownButton setBackgroundColor:[UIColor blackColor]];
     [ContrastDownButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [ContrastDownButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     
     preferenceSettingsButton.layer.borderColor = [UIColor redColor].CGColor;
     [[preferenceSettingsButton layer] setCornerRadius:8.0f];
-    [[preferenceSettingsButton layer] setBorderWidth:3.0f];
+    [[preferenceSettingsButton layer] setBorderWidth:thinBorderWidth];
     [preferenceSettingsButton setBackgroundColor:[UIColor blackColor]];
     [preferenceSettingsButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [preferenceSettingsButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
     
     connectButton.layer.borderColor = [UIColor redColor].CGColor;
     [[connectButton layer] setCornerRadius:8.0f];
-    [[connectButton layer] setBorderWidth:3.0f];
+    [[connectButton layer] setBorderWidth:thinBorderWidth];
     [connectButton setBackgroundColor:[UIColor blackColor]];
     [connectButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [connectButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     
     backgroundRectangle1.layer.borderColor = [UIColor redColor].CGColor;
     [[backgroundRectangle1 layer] setCornerRadius:8.0f];
-    [[backgroundRectangle1 layer] setBorderWidth:3.0f];
+    [[backgroundRectangle1 layer] setBorderWidth:thinBorderWidth];
     
     backgroundRectangle2.layer.borderColor = [UIColor redColor].CGColor;
     [[backgroundRectangle2 layer] setCornerRadius:8.0f];
-    [[backgroundRectangle2 layer] setBorderWidth:3.0f];
+    [[backgroundRectangle2 layer] setBorderWidth:thinBorderWidth];
 }
 
 - (void)didReceiveMemoryWarning
@@ -162,6 +166,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
 
 #pragma mark - Actions
 
@@ -179,8 +186,8 @@
             
             //turn off the POSITION button
             redOnOff = 0;
-            [redButton setBackgroundColor:[UIColor blackColor]];
-            [redButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            [positionButton setBackgroundColor:[UIColor blackColor]];
+            [positionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             
             
             //turn off the FOCUS button
@@ -217,8 +224,8 @@
             
             //turn off the POSITION button
             redOnOff = 0;
-            [redButton setBackgroundColor:[UIColor blackColor]];
-            [redButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            [positionButton setBackgroundColor:[UIColor blackColor]];
+            [positionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             
             
             //turn off the FOCUS button
@@ -312,8 +319,8 @@
         if (([metronomeOn isEqual: @"YES"]) && (redOnOff == 0) && (focusOnOff == 0))[audioBeepPlayer play];
         
         redOnOff = 0;
-        [redButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [redButton setBackgroundColor:[UIColor blackColor]];
+        [positionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [positionButton setBackgroundColor:[UIColor blackColor]];
         
     }
     
@@ -362,9 +369,14 @@
 }
 
 
-- (IBAction)timeChangeUpStart:(id)sender {
-    holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(zipTimeUp:) userInfo:nil repeats:NO];
-    [self timeUp:nil];
+- (IBAction)timeChangeUpStart:(id)sender {//This action is taken when the Up seconds button is PRESSED.
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *externalControl = [prefs stringForKey:@"externalControl"];
+    
+    if ([externalControl isEqual: @"OFF"]){ // Disabled when under External Control.
+        holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(zipTimeUp:) userInfo:nil repeats:NO];
+        [self timeUp:nil];
+    }
 }
 
 - (void)zipTimeUp:(id)sender{
@@ -372,9 +384,14 @@
     [holdTimer fire];
 }
 
-- (IBAction)timeChangeDownStart:(id)sender {
-    holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(zipTimeDown:) userInfo:nil repeats:NO];
-    [self timeDown:nil];
+- (IBAction)timeChangeDownStart:(id)sender {// This action is taken when the Down seconds button is PRESSED.
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *externalControl = [prefs stringForKey:@"externalControl"];
+    
+    if ([externalControl isEqual: @"OFF"]){ // Disabled when under External Control.
+        holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(zipTimeDown:) userInfo:nil repeats:NO];
+        [self timeDown:nil];
+    }
 }
 
 - (void)zipTimeDown:(id)sender{
@@ -382,67 +399,58 @@
     [holdTimer fire];
 }
 
-- (IBAction)timeChangeStop:(id)sender {
+- (IBAction)timeChangeStop:(id)sender { // This action is taken when either the UP or Down seconds buttons are RELEASED.
     [holdTimer invalidate];
 }
 
 
-- (void) timeUp:(id)sender { // This action is taken when the UP SECONDS button is pressed
+- (void) timeUp:(id)sender {
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *precisionTiming = [prefs stringForKey:@"precisionTiming"];
-    NSString *externalControl = [prefs stringForKey:@"externalControl"];
     
-    if ([externalControl isEqual: @"OFF"]){
-        if ([precisionTiming isEqual: @"YES"] && timeInTenthSeconds <=999){
-            timeInTenthSeconds=timeInTenthSeconds+1;
-            if (timeInTenthSeconds >9999) timeInTenthSeconds = 9999;
-            [timeField setText:[NSString stringWithFormat: @"%i.%i", timeInTenthSeconds/10, timeInTenthSeconds % 10]];
-        }
-        else{
-            timeInTenthSeconds=timeInTenthSeconds+10;
-            if (timeInTenthSeconds >9999) timeInTenthSeconds = 9999;
-            [timeField setText:[NSString stringWithFormat: @"%i", timeInTenthSeconds/10]];
-        }
-        
-        if (timeInTenthSeconds < 10) timeInSecondsString = [NSMutableString stringWithFormat: @"000%i", timeInTenthSeconds];
-        if (timeInTenthSeconds >=10 && timeInSeconds <100) timeInSecondsString = [NSMutableString stringWithFormat: @"00%i", timeInTenthSeconds];
-        if (timeInTenthSeconds >=100 && timeInTenthSeconds <1000) timeInSecondsString = [NSMutableString stringWithFormat: @"0%i", timeInTenthSeconds];
-        if (timeInTenthSeconds >=1000) timeInSecondsString = [NSMutableString stringWithFormat: @"%i", timeInTenthSeconds];
+    if ([precisionTiming isEqual: @"YES"] && timeInTenthSeconds <=999){
+        timeInTenthSeconds=timeInTenthSeconds+1;
+        if (timeInTenthSeconds >9999) timeInTenthSeconds = 9999;
+        [timeField setText:[NSString stringWithFormat: @"%i.%i", timeInTenthSeconds/10, timeInTenthSeconds % 10]];
     }
+    else{
+        timeInTenthSeconds=timeInTenthSeconds+10;
+        if (timeInTenthSeconds >9999) timeInTenthSeconds = 9999;
+        [timeField setText:[NSString stringWithFormat: @"%i", timeInTenthSeconds/10]];
+    }
+    
+    if (timeInTenthSeconds < 10) timeInSecondsString = [NSMutableString stringWithFormat: @"000%i", timeInTenthSeconds];
+    if (timeInTenthSeconds >=10 && timeInSeconds <100) timeInSecondsString = [NSMutableString stringWithFormat: @"00%i", timeInTenthSeconds];
+    if (timeInTenthSeconds >=100 && timeInTenthSeconds <1000) timeInSecondsString = [NSMutableString stringWithFormat: @"0%i", timeInTenthSeconds];
+    if (timeInTenthSeconds >=1000) timeInSecondsString = [NSMutableString stringWithFormat: @"%i", timeInTenthSeconds];
 }
 
 
-
-- (void) timeDown:(id)sender { // This action is taken when the DOWN SECONDS button is pressed
+- (void) timeDown:(id)sender {
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *precisionTiming = [prefs stringForKey:@"precisionTiming"];
-    NSString *externalControl = [prefs stringForKey:@"externalControl"];
     
-    if ([externalControl isEqual: @"OFF"]){
-        
-        if ([precisionTiming isEqual: @"YES"] && timeInTenthSeconds <=1000){
-            timeInTenthSeconds=timeInTenthSeconds-1;
-            if (timeInTenthSeconds < 0) timeInTenthSeconds = 0;
-            [timeField setText:[NSString stringWithFormat: @"%i.%i", timeInTenthSeconds/10, timeInTenthSeconds % 10]];
-        }
-        else{
-            timeInTenthSeconds=timeInTenthSeconds-10;
-            if (timeInTenthSeconds < 0) timeInTenthSeconds = 0;
-            [timeField setText:[NSString stringWithFormat: @"%i", timeInTenthSeconds/10]];
-        }
-        
-        if (timeInTenthSeconds < 10)timeInSecondsString = [NSMutableString stringWithFormat: @"000%i", timeInTenthSeconds];
-        if (timeInTenthSeconds >=10 && timeInTenthSeconds <100) timeInSecondsString = [NSMutableString stringWithFormat: @"00%i", timeInTenthSeconds];
-        if (timeInTenthSeconds >=100 && timeInTenthSeconds <1000) timeInSecondsString = [NSMutableString stringWithFormat: @"0%i", timeInTenthSeconds];
-        if (timeInTenthSeconds >=1000) timeInSecondsString = [NSMutableString stringWithFormat: @"%i", timeInTenthSeconds];
+    if ([precisionTiming isEqual: @"YES"] && timeInTenthSeconds <=1000){
+        timeInTenthSeconds=timeInTenthSeconds-1;
+        if (timeInTenthSeconds < 0) timeInTenthSeconds = 0;
+        [timeField setText:[NSString stringWithFormat: @"%i.%i", timeInTenthSeconds/10, timeInTenthSeconds % 10]];
     }
+    else{
+        timeInTenthSeconds=timeInTenthSeconds-10;
+        if (timeInTenthSeconds < 0) timeInTenthSeconds = 0;
+        [timeField setText:[NSString stringWithFormat: @"%i", timeInTenthSeconds/10]];
+    }
+    
+    if (timeInTenthSeconds < 10)timeInSecondsString = [NSMutableString stringWithFormat: @"000%i", timeInTenthSeconds];
+    if (timeInTenthSeconds >=10 && timeInTenthSeconds <100) timeInSecondsString = [NSMutableString stringWithFormat: @"00%i", timeInTenthSeconds];
+    if (timeInTenthSeconds >=100 && timeInTenthSeconds <1000) timeInSecondsString = [NSMutableString stringWithFormat: @"0%i", timeInTenthSeconds];
+    if (timeInTenthSeconds >=1000) timeInSecondsString = [NSMutableString stringWithFormat: @"%i", timeInTenthSeconds];
 }
 
 
-
-- (IBAction)redButtonPressed:(id)sender {  //This action occurs when the POSITION button is pressed. For safety, action is taken only when an exposure is not in progress.
+- (IBAction)positionButtonPressed:(id)sender {  //This action occurs when the POSITION button is pressed. For safety, action is taken only when an exposure is not in progress.
     
     NSString *s;
     NSData *d;
@@ -455,9 +463,8 @@
             if (exposeButtonOnOff == NO){ // Check that an exposure is not in progress
                 
                 redOnOff = 1;
-                [redButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                [redButton setBackgroundColor:[UIColor redColor]];
-                
+                [[positionButton layer] setBorderWidth:thickBorderWidth];
+               
                 // Set up the countdown timer and the time display
                 exposeButtonOnOff = YES;
                 timeCountDown = 3600;
@@ -466,8 +473,7 @@
                 
                 //turn off the FOCUS button
                 focusOnOff = 0;
-                [focusButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-                [focusButton setBackgroundColor:[UIColor blackColor]];
+                [[focusButton layer] setBorderWidth:thinBorderWidth];
                 
                 // Send Arduino command to turn on the red LED only for 6 minutes (3600 tenths of a second).
                 s = [NSString stringWithFormat:@"0003600255000000\r\n"];
@@ -477,24 +483,17 @@
         }
         
         else{
-            
             // Reset the FOCUS button
             redOnOff = 0;
-            [redButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-            [redButton setBackgroundColor:[UIColor blackColor]];
-            
+            [[positionButton layer] setBorderWidth:thinBorderWidth];
+           
             // Send the Arduino the command to turn everything off
             [self bleShieldSendNull:nil];
             
-            if ([externalControl isEqual: @"OFF"]){
-                //  Reset the START button
-                exposeButtonOnOff = NO;
-                [exposeButton setTitle:@"Start" forState:UIControlStateNormal];
-            }
-            else{
-                [self bleShieldSendData:nil];
-                [exposeButton setTitle:@"External" forState:UIControlStateNormal];
-            }
+            //  Reset the START button
+            exposeButtonOnOff = NO;
+            [exposeButton setTitle:@"Start" forState:UIControlStateNormal];
+            
         }
     }
 }
@@ -513,8 +512,7 @@
             if (exposeButtonOnOff == NO){ // Check that an exposure is not in progress
                 
                 focusOnOff = 1;
-                [focusButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                [focusButton setBackgroundColor:[UIColor redColor]];
+                [[focusButton layer] setBorderWidth:thickBorderWidth];
                 
                 // Set up the countdown timer and the time display
                 exposeButtonOnOff = YES;
@@ -522,11 +520,9 @@
                 countToTen = 10;
                 [self timerTenthTick:nil];
                 
-                
                 //turn off the POSITION button
                 redOnOff = 0;
-                [redButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-                [redButton setBackgroundColor:[UIColor blackColor]];
+                [[positionButton layer] setBorderWidth:thinBorderWidth];
                 
                 // Send Arduino command to turn on blue and green LEDs for 6 minutes (3600 tenths of a second).
                 s = [NSString stringWithFormat:@"0003600000255255\r\n"];
@@ -537,21 +533,14 @@
         
         else{
             focusOnOff = 0;
-            [focusButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-            [focusButton setBackgroundColor:[UIColor blackColor]];
+            [[focusButton layer] setBorderWidth:thinBorderWidth];
             
             // Send the Arduino the command to turn everything off
             [self bleShieldSendNull:nil];
-            
-            if ([externalControl isEqual: @"OFF"]){
-                //  Reset the START button
-                exposeButtonOnOff = NO;
-                [exposeButton setTitle:@"Start" forState:UIControlStateNormal];
-            }
-            else{
-                [self bleShieldSendData:nil];
-                [exposeButton setTitle:@"External" forState:UIControlStateNormal];
-            }
+        
+            //  Reset the START button
+            exposeButtonOnOff = NO;
+            [exposeButton setTitle:@"Start" forState:UIControlStateNormal];
         }
     }
 }
@@ -586,14 +575,11 @@
         
         // Reset FOCUS button (focusButton)
         focusOnOff = 0;
-        [focusButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [focusButton setBackgroundColor:[UIColor blackColor]];
+        [[focusButton layer] setBorderWidth:thinBorderWidth];
         
         //Reset POSITION button (redButton)
         redOnOff = 0;
-        [redButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [redButton setBackgroundColor:[UIColor blackColor]];
-        
+        [[positionButton layer] setBorderWidth:thinBorderWidth];
         
         s = [NSString stringWithFormat:@"0000000000000000\r\n"];
         d = [s dataUsingEncoding:NSUTF8StringEncoding];
@@ -655,6 +641,7 @@
     
     [self.spinner stopAnimating];
     [connectButton setTitle:@"Disconnect" forState:UIControlStateNormal];
+
     [audioTinkPlayer play];
     UIImage *img = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"ModernEnlargerLogo" ofType:@"png"]];
     [logoView setImage:img];
@@ -680,6 +667,7 @@
         [bleShield write:d];
         
         [exposeButton setTitle:@"External" forState:UIControlStateNormal];
+
     }
     else if ([footSwitch isEqual: @"ON"]){
         timeInTenthSeconds = 0;
@@ -741,6 +729,8 @@
         [self bleShieldSendData:nil];
         
         [exposeButton setTitle:@"External" forState:UIControlStateNormal];
+        [[focusButton layer] setBorderWidth:thinBorderWidth];
+        [[positionButton layer] setBorderWidth:thinBorderWidth];
         
     }
     else if ([footSwitch isEqual: @"ON"]){

@@ -22,6 +22,11 @@
 		E3088A2A186F944F0049B91A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3088A09186F944F0049B91A /* UIKit.framework */; };
 		E3088A32186F944F0049B91A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E3088A30186F944F0049B91A /* InfoPlist.strings */; };
 		E3088A34186F944F0049B91A /* Advanced_Lamp_ControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E3088A33186F944F0049B91A /* Advanced_Lamp_ControllerTests.m */; };
+		E3769796187B659000FD7CA6 /* ALC Icon 29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = E3769791187B659000FD7CA6 /* ALC Icon 29x29.png */; };
+		E3769797187B659000FD7CA6 /* ALC Icon 57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = E3769792187B659000FD7CA6 /* ALC Icon 57x57.png */; };
+		E3769798187B659000FD7CA6 /* ALC Icon 58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = E3769793187B659000FD7CA6 /* ALC Icon 58x58.png */; };
+		E3769799187B659000FD7CA6 /* ALC Icon 80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = E3769794187B659000FD7CA6 /* ALC Icon 80x80.png */; };
+		E376979A187B659000FD7CA6 /* ALC Icon 114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = E3769795187B659000FD7CA6 /* ALC Icon 114x114.png */; };
 		E3AEB4D4186FA0EC00909E54 /* fStopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AEB4D2186FA0EC00909E54 /* fStopViewController.m */; };
 		E3AEB4D5186FA0EC00909E54 /* fStopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3AEB4D3186FA0EC00909E54 /* fStopViewController.xib */; };
 		E3AEB4DA186FA71F00909E54 /* BLE.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AEB4D8186FA71F00909E54 /* BLE.m */; };
@@ -64,6 +69,11 @@
 		E3088A2F186F944F0049B91A /* Advanced Lamp ControllerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Advanced Lamp ControllerTests-Info.plist"; sourceTree = "<group>"; };
 		E3088A31186F944F0049B91A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E3088A33186F944F0049B91A /* Advanced_Lamp_ControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Advanced_Lamp_ControllerTests.m; sourceTree = "<group>"; };
+		E3769791187B659000FD7CA6 /* ALC Icon 29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ALC Icon 29x29.png"; sourceTree = "<group>"; };
+		E3769792187B659000FD7CA6 /* ALC Icon 57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ALC Icon 57x57.png"; sourceTree = "<group>"; };
+		E3769793187B659000FD7CA6 /* ALC Icon 58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ALC Icon 58x58.png"; sourceTree = "<group>"; };
+		E3769794187B659000FD7CA6 /* ALC Icon 80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ALC Icon 80x80.png"; sourceTree = "<group>"; };
+		E3769795187B659000FD7CA6 /* ALC Icon 114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ALC Icon 114x114.png"; sourceTree = "<group>"; };
 		E3AEB4D1186FA0EC00909E54 /* fStopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fStopViewController.h; sourceTree = "<group>"; };
 		E3AEB4D2186FA0EC00909E54 /* fStopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fStopViewController.m; sourceTree = "<group>"; };
 		E3AEB4D3186FA0EC00909E54 /* fStopViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = fStopViewController.xib; sourceTree = "<group>"; };
@@ -195,6 +205,11 @@
 		E3AEB4E3186FADE000909E54 /* Images and Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				E3769791187B659000FD7CA6 /* ALC Icon 29x29.png */,
+				E3769792187B659000FD7CA6 /* ALC Icon 57x57.png */,
+				E3769793187B659000FD7CA6 /* ALC Icon 58x58.png */,
+				E3769794187B659000FD7CA6 /* ALC Icon 80x80.png */,
+				E3769795187B659000FD7CA6 /* ALC Icon 114x114.png */,
 				E3AEB4E6186FB8A400909E54 /* Default.png */,
 				E3AEB4E4186FAE6500909E54 /* Rectangle.png */,
 				E3AEB4DC186FADB400909E54 /* ModernEnlargerLogo.png */,
@@ -280,15 +295,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3769799187B659000FD7CA6 /* ALC Icon 80x80.png in Resources */,
 				E3088A21186F944F0049B91A /* Images.xcassets in Resources */,
 				E3AEB4E7186FB8A400909E54 /* Default.png in Resources */,
+				E3769798187B659000FD7CA6 /* ALC Icon 58x58.png in Resources */,
+				E3769797187B659000FD7CA6 /* ALC Icon 57x57.png in Resources */,
 				E3AEB4E0186FADB400909E54 /* ModernEnlargerLogo.png in Resources */,
+				E376979A187B659000FD7CA6 /* ALC Icon 114x114.png in Resources */,
 				E3088A10186F944F0049B91A /* InfoPlist.strings in Resources */,
 				E3088A19186F944F0049B91A /* Main.storyboard in Resources */,
 				E3AEB4E1186FADB400909E54 /* Tink.aiff in Resources */,
 				E3AEB4E5186FAE6500909E54 /* Rectangle.png in Resources */,
 				E3AEB4DF186FADB400909E54 /* Beep.aiff in Resources */,
 				E3AEB4D5186FA0EC00909E54 /* fStopViewController.xib in Resources */,
+				E3769796187B659000FD7CA6 /* ALC Icon 29x29.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,7 +462,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Advanced Lamp Controller/Advanced Lamp Controller-Prefix.pch";
 				INFOPLIST_FILE = "Advanced Lamp Controller/Advanced Lamp Controller-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -455,7 +477,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Advanced Lamp Controller/Advanced Lamp Controller-Prefix.pch";
 				INFOPLIST_FILE = "Advanced Lamp Controller/Advanced Lamp Controller-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

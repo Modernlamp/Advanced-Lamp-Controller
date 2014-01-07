@@ -15,10 +15,12 @@
 
 
 
-@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, fStopViewControllerDelegate, BLEDelegate>
+@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, fStopViewControllerDelegate, BLEDelegate, AVAudioPlayerDelegate>
 {
     float contrastInUnits;
     float timeInSeconds;
+    float thinBorderWidth;
+    float thickBorderWidth;
     int contrastValueTimesTen;
     int timeInTenthSeconds;
     int integerContrastInUnits;
@@ -35,8 +37,6 @@
     int blueBrightness;
     int greenBrightness;
     bool timeInTenthsYesNo;
-    
-    //
     
     NSMutableString *timeInSecondsString;
     NSMutableString *greenBrightnessString;
@@ -55,7 +55,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *fStopSettingsButton;
 @property (weak, nonatomic) IBOutlet UIButton *preferenceSettingsButton;
 @property (weak, nonatomic) IBOutlet UIButton *connectButton;
-@property (weak, nonatomic) IBOutlet UIButton *redButton;
+@property (weak, nonatomic) IBOutlet UIButton *positionButton;
 @property (weak, nonatomic) IBOutlet UIButton *exposeButton;
 @property (weak, nonatomic) IBOutlet UIButton *focusButton;
 @property (weak, nonatomic) IBOutlet UIButton *resetButton;
