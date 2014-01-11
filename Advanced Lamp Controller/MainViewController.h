@@ -31,7 +31,7 @@
     int timeCountDown;
     int brightnessMultiplier;
     
-    bool exposeButtonOnOff;
+    bool exposeButtonIsOn;
     id holdTimer;
     int blueBrightness;
     int greenBrightness;

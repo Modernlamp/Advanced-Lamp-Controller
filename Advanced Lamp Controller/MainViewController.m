@@ -49,7 +49,7 @@
     contrastInUnits = 0;
     redOnOff = 0;
     focusOnOff = 0;
-    exposeButtonOnOff = NO;
+    exposeButtonIsOn = NO;
     countToTen = 0;
     timeInSecondsString = [NSMutableString stringWithFormat:@"0000"];
     thinBorderWidth=2.0;
@@ -181,8 +181,8 @@
     
     if ([externalControl isEqual: @"OFF"]){
         
-        if (exposeButtonOnOff == NO){
-            exposeButtonOnOff = YES;
+        if (exposeButtonIsOn == NO){
+            exposeButtonIsOn = YES;
             
             //turn off the POSITION and FOCUS buttons
             redOnOff = 0;
@@ -191,16 +191,16 @@
             [[focusButton layer] setBorderWidth:thinBorderWidth];
             
             if ([delayStartOn isEqual: @"YES"]){
-                holdTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(bleShieldSendData:) userInfo:nil repeats:NO];
+                holdTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(bleShieldSendData) userInfo:nil repeats:NO];
                 [self bleShieldSendFiveSecRed];}
             else{
-                [self bleShieldSendData:nil];}
+                [self bleShieldSendData];}
         }
         else{
             [holdTimer invalidate];
-            [self bleShieldSendNull:nil];
+            [self bleShieldSendNull];
             
-            exposeButtonOnOff = NO;
+            exposeButtonIsOn = NO;
             [exposeButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             [exposeButton setTitle:@"Start" forState:UIControlStateNormal];
             [exposeButton setBackgroundColor:[UIColor blackColor]];
@@ -217,7 +217,7 @@
 }
 
 
--(void)bleShieldSendData:(id)sender{
+-(void)bleShieldSendData{
     
     NSString *s;
     NSData *d;
@@ -275,7 +275,7 @@
 }
 
 
--(void)bleShieldSendNull:(id)sender{
+-(void)bleShieldSendNull{
     
     NSString *s;
     NSData *d;
@@ -298,7 +298,7 @@
     if ([externalControl isEqual: @"OFF"]){
         // Reset the START button when the countdown reaches 0.
         if (timeCountDown <= 0){
-            exposeButtonOnOff = NO;
+            exposeButtonIsOn = NO;
             countToTen=0;
             [exposeButton setBackgroundColor:[UIColor blackColor]];
             [exposeButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
@@ -315,7 +315,7 @@
         
         // Otherwise display the countdown time on the START buttton
         else{
-            if (exposeButtonOnOff == YES){
+            if (exposeButtonIsOn == YES){
                 if((timeInTenthSeconds > 999) || ([precisionTiming isEqual: @"NO"]))[exposeButton setTitle:[NSString stringWithFormat: @"%i", (timeCountDown+9)/10] forState:UIControlStateNormal];
                 else[exposeButton setTitle:[NSString stringWithFormat: @"%i.%i", timeCountDown/10, timeCountDown%10] forState:UIControlStateNormal];
                 
@@ -349,7 +349,7 @@
     if (contrastValueTimesTen % 10 == 0)[contrastField setText:[NSString stringWithFormat: @"%1.0f", (float)contrastValueTimesTen/10]];
     else [contrastField setText:[NSString stringWithFormat: @"%1.1f", (float)contrastValueTimesTen/10]];
     
-    if([externalControl isEqual:@"ON"]) [self bleShieldSendData:nil];
+    if([externalControl isEqual:@"ON"]) [self bleShieldSendData];
 }
 
 - (IBAction)contrastChangeDownStart:(id)sender {//This action is taken when the Up contrast button is PRESSED.
@@ -372,7 +372,7 @@
     if (contrastValueTimesTen % 10 == 0)[contrastField setText:[NSString stringWithFormat: @"%1.0f", (float)contrastValueTimesTen/10]];
     else [contrastField setText:[NSString stringWithFormat: @"%1.1f", (float)contrastValueTimesTen/10]];
     
-    if([externalControl isEqual:@"ON"])[self bleShieldSendData:nil];
+    if([externalControl isEqual:@"ON"])[self bleShieldSendData];
 }
 
 
@@ -457,13 +457,13 @@
     if ([externalControl isEqual: @"OFF"]){ //disable the position button when under external control
         if (redOnOff == 0){
             
-            if (exposeButtonOnOff == NO){ // Check that an exposure is not in progress
+            if (exposeButtonIsOn == NO){ // Check that an exposure is not in progress
                 
                 redOnOff = 1;
                 [[positionButton layer] setBorderWidth:thickBorderWidth];
                
                 // Set up the countdown timer and the time display
-                exposeButtonOnOff = YES;
+                exposeButtonIsOn = YES;
                 timeCountDown = 3600;
                 countToTen = 10;
                 [self timerTenthTick:nil];
@@ -485,10 +485,10 @@
             [[positionButton layer] setBorderWidth:thinBorderWidth];
            
             // Send the Arduino the command to turn everything off
-            [self bleShieldSendNull:nil];
+            [self bleShieldSendNull];
             
             //  Reset the START button
-            exposeButtonOnOff = NO;
+            exposeButtonIsOn = NO;
             [exposeButton setTitle:@"Start" forState:UIControlStateNormal];
             
         }
@@ -506,13 +506,13 @@
         
         if (focusOnOff == 0){
             
-            if (exposeButtonOnOff == NO){ // Check that an exposure is not in progress
+            if (exposeButtonIsOn == NO){ // Check that an exposure is not in progress
                 
                 focusOnOff = 1;
                 [[focusButton layer] setBorderWidth:thickBorderWidth];
                 
                 // Set up the countdown timer and the time display
-                exposeButtonOnOff = YES;
+                exposeButtonIsOn = YES;
                 timeCountDown = 3600;
                 countToTen = 10;
                 [self timerTenthTick:nil];
@@ -533,19 +533,16 @@
             [[focusButton layer] setBorderWidth:thinBorderWidth];
             
             // Send the Arduino the command to turn everything off
-            [self bleShieldSendNull:nil];
+            [self bleShieldSendNull];
         
             //  Reset the START button
-            exposeButtonOnOff = NO;
+            exposeButtonIsOn = NO;
             [exposeButton setTitle:@"Start" forState:UIControlStateNormal];
         }
     }
 }
 
 - (IBAction)resetButtonPressed:(id)sender {
-    
-    NSString *s;
-    NSData *d;
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *metronomeOn = [prefs stringForKey:@"metronome"];
@@ -563,7 +560,7 @@
         blueBrightness = 0;
         
         // Reset START button (exposeButton)
-        exposeButtonOnOff = NO;
+        exposeButtonIsOn = NO;
         [exposeButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         [exposeButton setTitle:@"Start" forState:UIControlStateNormal];
         [exposeButton setBackgroundColor:[UIColor blackColor]];
@@ -577,9 +574,7 @@
         redOnOff = 0;
         [[positionButton layer] setBorderWidth:thinBorderWidth];
         
-        s = [NSString stringWithFormat:@"0000000000000000\r\n"];
-        d = [s dataUsingEncoding:NSUTF8StringEncoding];
-        [bleShield write:d];
+        [self bleShieldSendNull];
     }
 }
 
@@ -722,7 +717,7 @@
         d = [s dataUsingEncoding:NSUTF8StringEncoding];
         [bleShield write:d];
 
-        [self bleShieldSendData:nil];
+        [self bleShieldSendData];
         
         [exposeButton setTitle:@"External" forState:UIControlStateNormal];
         [[focusButton layer] setBorderWidth:thinBorderWidth];
