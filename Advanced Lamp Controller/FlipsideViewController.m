@@ -186,10 +186,15 @@
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *delayStartOn = [prefs stringForKey:@"delayStart"];
+    NSString *externalControl = [prefs stringForKey:@"externalControl"];
+    NSString *footSwitch = [prefs stringForKey:@"footSwitch"];
+
     
     if ([delayStartOn isEqual: @"NO"]){
-        [prefs setObject:@"YES" forKey:@"delayStart"];
-        [delayStartSwitch setTitle:[NSString stringWithFormat: @"          On"] forState:UIControlStateNormal];
+        if ([externalControl isEqual: @"OFF"] && [footSwitch isEqual: @"OFF"]){
+            [prefs setObject:@"YES" forKey:@"delayStart"];
+            [delayStartSwitch setTitle:[NSString stringWithFormat: @"          On"] forState:UIControlStateNormal];
+        }
     }
     else{
         [prefs setObject:@"NO" forKey:@"delayStart"];

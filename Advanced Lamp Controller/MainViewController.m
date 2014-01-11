@@ -184,30 +184,16 @@
         if (exposeButtonOnOff == NO){
             exposeButtonOnOff = YES;
             
-            //turn off the POSITION button
+            //turn off the POSITION and FOCUS buttons
             redOnOff = 0;
             [[positionButton layer] setBorderWidth:thinBorderWidth];
-            
-            
-            //turn off the FOCUS button
             focusOnOff = 0;
             [[focusButton layer] setBorderWidth:thinBorderWidth];
             
             if ([delayStartOn isEqual: @"YES"]){
                 holdTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(bleShieldSendData:) userInfo:nil repeats:NO];
-                
-                timeCountDown = timeInTenthSeconds;
-                countToTen = 10;
-                [self timerTenthTick:nil];
-
                 [self bleShieldSendFiveSecRed];}
-            
             else{
-                
-                timeCountDown = timeInTenthSeconds;
-                countToTen = 10;
-                [self timerTenthTick:nil];
-
                 [self bleShieldSendData:nil];}
         }
         else{
@@ -220,12 +206,9 @@
             [exposeButton setBackgroundColor:[UIColor blackColor]];
             if ([metronomeOn isEqual: @"YES"]) [audioBeepPlayer play];
             
-            //turn off the POSITION button
+            //turn off the POSITION and FOCUS buttons
             redOnOff = 0;
             [[positionButton layer] setBorderWidth:thinBorderWidth];
-            
-            
-            //turn off the FOCUS button
             focusOnOff = 0;
             [[focusButton layer] setBorderWidth:thinBorderWidth];
             
@@ -241,12 +224,21 @@
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *brightness = [prefs stringForKey:@"brightness"];
     NSString *preflash = [prefs stringForKey:@"preflash"];
-    
+ 
+    timeCountDown = timeInTenthSeconds;
+    countToTen = 10;
+    [self timerTenthTick:nil];
+
     if ([brightness isEqual: @"HI"]){brightnessMultiplier = 51;}
     else {brightnessMultiplier = 12;}
     
     if ([preflash isEqual: @"YES"]){brightnessMultiplier = 2;}
     
+    // Calculate the timeInSecondsString properly    
+    if (timeInTenthSeconds < 10) timeInSecondsString = [NSMutableString stringWithFormat: @"000%i", timeInTenthSeconds];
+    if (timeInTenthSeconds >=10 && timeInSeconds <100) timeInSecondsString = [NSMutableString stringWithFormat: @"00%i", timeInTenthSeconds];
+    if (timeInTenthSeconds >=100 && timeInTenthSeconds <1000) timeInSecondsString = [NSMutableString stringWithFormat: @"0%i", timeInTenthSeconds];
+    if (timeInTenthSeconds >=1000) timeInSecondsString = [NSMutableString stringWithFormat: @"%i", timeInTenthSeconds];
     
     // Calculate the Green LED Brightness and format the greenBrightness string properly
     greenBrightness = floor(((5-((float)contrastValueTimesTen)/10)*brightnessMultiplier) + .5);
@@ -294,44 +286,46 @@
     
 }
 
-- (void)timerTenthTick:(id)sender{    /* This is where the countdown occurs.  You arrive here when a data packet is
-                                       received from the Arduino. These data packets arrive every 0.1s as countdown
-                                       is in progress. The arrival of the data packet alone triggers this call; the
-                                       value of the data itself is not used.*/
+- (void)timerTenthTick:(id)sender{/* This is where the countdown occurs.  You arrive here when a data packet is received from the Arduino. These data packets arrive every 0.1s as countdown is in progress. The arrival of the data packet alone triggers this call; the value of the data itself is not used.*/
     
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *metronomeOn = [prefs stringForKey:@"metronome"];
     NSString *precisionTiming = [prefs stringForKey:@"precisionTiming"];
+    NSString *externalControl = [prefs stringForKey:@"externalControl"];
     
     
-    // Reset the START button when the countdown reaches 0.
-    if (timeCountDown <= 0){
-        exposeButtonOnOff = NO;
-        countToTen=0;
-        [exposeButton setBackgroundColor:[UIColor blackColor]];
-        [exposeButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [exposeButton setTitle:@"Start" forState:UIControlStateNormal];
-        if (([metronomeOn isEqual: @"YES"]) && (redOnOff == 0) && (focusOnOff == 0))[audioBeepPlayer play];
-        
-        redOnOff = 0;
-        [positionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [positionButton setBackgroundColor:[UIColor blackColor]];
-        
-    }
-    
-    // Otherwise display the countdown time on the START buttton
-    else{
-        if (exposeButtonOnOff == YES){
-            if((timeInTenthSeconds > 999) || ([precisionTiming isEqual: @"NO"]))[exposeButton setTitle:[NSString stringWithFormat: @"%i", (timeCountDown+9)/10] forState:UIControlStateNormal];
-            else[exposeButton setTitle:[NSString stringWithFormat: @"%i.%i", timeCountDown/10, timeCountDown%10] forState:UIControlStateNormal];
+    if ([externalControl isEqual: @"OFF"]){
+        // Reset the START button when the countdown reaches 0.
+        if (timeCountDown <= 0){
+            exposeButtonOnOff = NO;
+            countToTen=0;
+            [exposeButton setBackgroundColor:[UIColor blackColor]];
+            [exposeButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            [exposeButton setTitle:@"Start" forState:UIControlStateNormal];
+            if (([metronomeOn isEqual: @"YES"]) && (redOnOff == 0) && (focusOnOff == 0))[audioBeepPlayer play];
             
-            if (([metronomeOn isEqual: @"YES"]) && (countToTen == 10) && (redOnOff == 0) && (focusOnOff == 0)){
-                [audioTinkPlayer play];
-                countToTen = 0;
+            //turn off the POSITION and FOCUS buttons
+            redOnOff = 0;
+            [[positionButton layer] setBorderWidth:thinBorderWidth];
+            focusOnOff = 0;
+            [[focusButton layer] setBorderWidth:thinBorderWidth];
+            
+        }
+        
+        // Otherwise display the countdown time on the START buttton
+        else{
+            if (exposeButtonOnOff == YES){
+                if((timeInTenthSeconds > 999) || ([precisionTiming isEqual: @"NO"]))[exposeButton setTitle:[NSString stringWithFormat: @"%i", (timeCountDown+9)/10] forState:UIControlStateNormal];
+                else[exposeButton setTitle:[NSString stringWithFormat: @"%i.%i", timeCountDown/10, timeCountDown%10] forState:UIControlStateNormal];
+                
+                if (([metronomeOn isEqual: @"YES"]) && (countToTen == 10) && (redOnOff == 0) && (focusOnOff == 0)){
+                    [audioTinkPlayer play];
+                    countToTen = 0;
+                }
+                timeCountDown=timeCountDown-1;
+                countToTen = countToTen+1;
             }
-            timeCountDown=timeCountDown-1;
-            countToTen = countToTen+1;
         }
     }
 }
@@ -432,11 +426,6 @@
         if (timeInTenthSeconds >9999) timeInTenthSeconds = 9999;
         [timeField setText:[NSString stringWithFormat: @"%i", timeInTenthSeconds/10]];
     }
-    
-    if (timeInTenthSeconds < 10) timeInSecondsString = [NSMutableString stringWithFormat: @"000%i", timeInTenthSeconds];
-    if (timeInTenthSeconds >=10 && timeInSeconds <100) timeInSecondsString = [NSMutableString stringWithFormat: @"00%i", timeInTenthSeconds];
-    if (timeInTenthSeconds >=100 && timeInTenthSeconds <1000) timeInSecondsString = [NSMutableString stringWithFormat: @"0%i", timeInTenthSeconds];
-    if (timeInTenthSeconds >=1000) timeInSecondsString = [NSMutableString stringWithFormat: @"%i", timeInTenthSeconds];
 }
 
 
@@ -455,11 +444,6 @@
         if (timeInTenthSeconds < 0) timeInTenthSeconds = 0;
         [timeField setText:[NSString stringWithFormat: @"%i", timeInTenthSeconds/10]];
     }
-    
-    if (timeInTenthSeconds < 10)timeInSecondsString = [NSMutableString stringWithFormat: @"000%i", timeInTenthSeconds];
-    if (timeInTenthSeconds >=10 && timeInTenthSeconds <100) timeInSecondsString = [NSMutableString stringWithFormat: @"00%i", timeInTenthSeconds];
-    if (timeInTenthSeconds >=100 && timeInTenthSeconds <1000) timeInSecondsString = [NSMutableString stringWithFormat: @"0%i", timeInTenthSeconds];
-    if (timeInTenthSeconds >=1000) timeInSecondsString = [NSMutableString stringWithFormat: @"%i", timeInTenthSeconds];
 }
 
 
