@@ -186,14 +186,12 @@
             
             //turn off the POSITION button
             redOnOff = 0;
-            [positionButton setBackgroundColor:[UIColor blackColor]];
-            [positionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            [[positionButton layer] setBorderWidth:thinBorderWidth];
             
             
             //turn off the FOCUS button
             focusOnOff = 0;
-            [focusButton setBackgroundColor:[UIColor blackColor]];
-            [focusButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            [[focusButton layer] setBorderWidth:thinBorderWidth];
             
             if ([delayStartOn isEqual: @"YES"]){
                 holdTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(bleShieldSendData:) userInfo:nil repeats:NO];
@@ -202,7 +200,7 @@
                 countToTen = 10;
                 [self timerTenthTick:nil];
 
-                [self bleShieldSendFiveSecRed:nil];}
+                [self bleShieldSendFiveSecRed];}
             
             else{
                 
@@ -224,14 +222,12 @@
             
             //turn off the POSITION button
             redOnOff = 0;
-            [positionButton setBackgroundColor:[UIColor blackColor]];
-            [positionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            [[positionButton layer] setBorderWidth:thinBorderWidth];
             
             
             //turn off the FOCUS button
             focusOnOff = 0;
-            [focusButton setBackgroundColor:[UIColor blackColor]];
-            [focusButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            [[focusButton layer] setBorderWidth:thinBorderWidth];
             
         }
     }
@@ -272,7 +268,7 @@
     
 }
 
--(void)bleShieldSendFiveSecRed:(id)sender{
+-(void)bleShieldSendFiveSecRed{
     
     NSString *s;
     NSData *d;
@@ -341,16 +337,16 @@
 }
 
 - (IBAction)contrastChangeUpStart:(id)sender {//This action is taken when the Up contrast button is PRESSED.
-    holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(zipContrastUp:) userInfo:nil repeats:NO];
-    [self contrastUp:nil];
+    holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(zipContrastUp) userInfo:nil repeats:NO];
+    [self contrastUp];
 }
 
-- (void)zipContrastUp:(id)sender{
-    holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.18 target:self selector:@selector(contrastUp:) userInfo:nil repeats:YES];
+- (void)zipContrastUp{
+    holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.18 target:self selector:@selector(contrastUp) userInfo:nil repeats:YES];
     [holdTimer fire];
 }
 
-- (void)contrastUp:(id)sender {
+- (void)contrastUp{
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *externalControl = [prefs stringForKey:@"externalControl"];
     
@@ -363,16 +359,16 @@
 }
 
 - (IBAction)contrastChangeDownStart:(id)sender {//This action is taken when the Up contrast button is PRESSED.
-    holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(zipContrastDown:) userInfo:nil repeats:NO];
-    [self contrastDown:nil];
+    holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(zipContrastDown) userInfo:nil repeats:NO];
+    [self contrastDown];
 }
 
-- (void)zipContrastDown:(id)sender{
-    holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.18 target:self selector:@selector(contrastDown:) userInfo:nil repeats:YES];
+- (void)zipContrastDown{
+    holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.18 target:self selector:@selector(contrastDown) userInfo:nil repeats:YES];
     [holdTimer fire];
 }
 
-- (void)contrastDown:(id)sender { // This action occurs when the Down CONTRAST button is pressed
+- (void)contrastDown{ // This action occurs when the Down CONTRAST button is pressed
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *externalControl = [prefs stringForKey:@"externalControl"];
@@ -391,13 +387,13 @@
     NSString *externalControl = [prefs stringForKey:@"externalControl"];
     
     if ([externalControl isEqual: @"OFF"]){ // Disabled when under External Control.
-        holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(zipTimeUp:) userInfo:nil repeats:NO];
-        [self timeUp:nil];
+        holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(zipTimeUp) userInfo:nil repeats:NO];
+        [self timeUp];
     }
 }
 
-- (void)zipTimeUp:(id)sender{
-    holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.06 target:self selector:@selector(timeUp:) userInfo:nil repeats:YES];
+- (void)zipTimeUp{
+    holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.06 target:self selector:@selector(timeUp) userInfo:nil repeats:YES];
     [holdTimer fire];
 }
 
@@ -406,13 +402,13 @@
     NSString *externalControl = [prefs stringForKey:@"externalControl"];
     
     if ([externalControl isEqual: @"OFF"]){ // Disabled when under External Control.
-        holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(zipTimeDown:) userInfo:nil repeats:NO];
-        [self timeDown:nil];
+        holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(zipTimeDown) userInfo:nil repeats:NO];
+        [self timeDown];
     }
 }
 
-- (void)zipTimeDown:(id)sender{
-    holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.06 target:self selector:@selector(timeDown:) userInfo:nil repeats:YES];
+- (void)zipTimeDown{
+    holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.06 target:self selector:@selector(timeDown) userInfo:nil repeats:YES];
     [holdTimer fire];
 }
 
@@ -421,7 +417,7 @@
 }
 
 
-- (void) timeUp:(id)sender {
+- (void) timeUp{
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *precisionTiming = [prefs stringForKey:@"precisionTiming"];
@@ -444,7 +440,7 @@
 }
 
 
-- (void) timeDown:(id)sender {
+- (void) timeDown{
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *precisionTiming = [prefs stringForKey:@"precisionTiming"];
