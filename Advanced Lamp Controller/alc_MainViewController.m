@@ -664,6 +664,7 @@
         timeInSecondsString = [NSMutableString stringWithFormat: @"0000"];
         [timeField setText:[NSString stringWithFormat: @"%i", timeInTenthSeconds]];
         s = [NSString stringWithFormat:@"0060000000000000\r\n"];
+        d = [s dataUsingEncoding:NSUTF8StringEncoding];
         [bleShield write:d];
     }
     else{
