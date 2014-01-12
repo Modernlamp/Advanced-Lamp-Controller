@@ -12,9 +12,9 @@
 		E3088A0A186F944F0049B91A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3088A09186F944F0049B91A /* UIKit.framework */; };
 		E3088A10186F944F0049B91A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E3088A0E186F944F0049B91A /* InfoPlist.strings */; };
 		E3088A12186F944F0049B91A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E3088A11186F944F0049B91A /* main.m */; };
-		E3088A16186F944F0049B91A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E3088A15186F944F0049B91A /* AppDelegate.m */; };
-		E3088A19186F944F0049B91A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3088A17186F944F0049B91A /* Main.storyboard */; };
-		E3088A1C186F944F0049B91A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3088A1B186F944F0049B91A /* MainViewController.m */; };
+		E3088A16186F944F0049B91A /* alc_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E3088A15186F944F0049B91A /* alc_AppDelegate.m */; };
+		E3088A19186F944F0049B91A /* alc_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3088A17186F944F0049B91A /* alc_Main.storyboard */; };
+		E3088A1C186F944F0049B91A /* alc_MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3088A1B186F944F0049B91A /* alc_MainViewController.m */; };
 		E3088A1F186F944F0049B91A /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3088A1E186F944F0049B91A /* FlipsideViewController.m */; };
 		E3088A21186F944F0049B91A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3088A20186F944F0049B91A /* Images.xcassets */; };
 		E3088A28186F944F0049B91A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3088A27186F944F0049B91A /* XCTest.framework */; };
@@ -67,11 +67,11 @@
 		E3088A0F186F944F0049B91A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E3088A11186F944F0049B91A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E3088A13186F944F0049B91A /* Advanced Lamp Controller-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Advanced Lamp Controller-Prefix.pch"; sourceTree = "<group>"; };
-		E3088A14186F944F0049B91A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		E3088A15186F944F0049B91A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E3088A18186F944F0049B91A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E3088A1A186F944F0049B91A /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		E3088A1B186F944F0049B91A /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		E3088A14186F944F0049B91A /* alc_AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = alc_AppDelegate.h; sourceTree = "<group>"; };
+		E3088A15186F944F0049B91A /* alc_AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = alc_AppDelegate.m; sourceTree = "<group>"; };
+		E3088A18186F944F0049B91A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/alc_Main.storyboard; sourceTree = "<group>"; };
+		E3088A1A186F944F0049B91A /* alc_MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = alc_MainViewController.h; sourceTree = "<group>"; };
+		E3088A1B186F944F0049B91A /* alc_MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = alc_MainViewController.m; sourceTree = "<group>"; };
 		E3088A1D186F944F0049B91A /* FlipsideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlipsideViewController.h; sourceTree = "<group>"; };
 		E3088A1E186F944F0049B91A /* FlipsideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlipsideViewController.m; sourceTree = "<group>"; };
 		E3088A20186F944F0049B91A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -167,11 +167,11 @@
 		E3088A0B186F944F0049B91A /* Advanced Lamp Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E3088A14186F944F0049B91A /* AppDelegate.h */,
-				E3088A15186F944F0049B91A /* AppDelegate.m */,
-				E3088A17186F944F0049B91A /* Main.storyboard */,
-				E3088A1A186F944F0049B91A /* MainViewController.h */,
-				E3088A1B186F944F0049B91A /* MainViewController.m */,
+				E3088A14186F944F0049B91A /* alc_AppDelegate.h */,
+				E3088A15186F944F0049B91A /* alc_AppDelegate.m */,
+				E3088A17186F944F0049B91A /* alc_Main.storyboard */,
+				E3088A1A186F944F0049B91A /* alc_MainViewController.h */,
+				E3088A1B186F944F0049B91A /* alc_MainViewController.m */,
 				E3088A1D186F944F0049B91A /* FlipsideViewController.h */,
 				E3088A1E186F944F0049B91A /* FlipsideViewController.m */,
 				E3AEB4D1186FA0EC00909E54 /* fStopViewController.h */,
@@ -346,7 +346,7 @@
 				E3709FD91882631400F03B3D /* icon_57x57.png in Resources */,
 				E3709FDB1882631400F03B3D /* icon_60x60.png in Resources */,
 				E3709FE2188263B600F03B3D /* icon_120x120.png in Resources */,
-				E3088A19186F944F0049B91A /* Main.storyboard in Resources */,
+				E3088A19186F944F0049B91A /* alc_Main.storyboard in Resources */,
 				E3AEB4E1186FADB400909E54 /* Tink.aiff in Resources */,
 				E3709FD41882631400F03B3D /* icon_29x29@2x.png in Resources */,
 				E3709FE41882640B00F03B3D /* icon_80x80.png in Resources */,
@@ -371,9 +371,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3088A16186F944F0049B91A /* AppDelegate.m in Sources */,
+				E3088A16186F944F0049B91A /* alc_AppDelegate.m in Sources */,
 				E3AEB4D4186FA0EC00909E54 /* fStopViewController.m in Sources */,
-				E3088A1C186F944F0049B91A /* MainViewController.m in Sources */,
+				E3088A1C186F944F0049B91A /* alc_MainViewController.m in Sources */,
 				E3AEB4DA186FA71F00909E54 /* BLE.m in Sources */,
 				E3088A1F186F944F0049B91A /* FlipsideViewController.m in Sources */,
 				E3088A12186F944F0049B91A /* main.m in Sources */,
@@ -407,12 +407,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		E3088A17186F944F0049B91A /* Main.storyboard */ = {
+		E3088A17186F944F0049B91A /* alc_Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E3088A18186F944F0049B91A /* Base */,
 			);
-			name = Main.storyboard;
+			name = alc_Main.storyboard;
 			sourceTree = "<group>";
 		};
 		E3088A30186F944F0049B91A /* InfoPlist.strings */ = {

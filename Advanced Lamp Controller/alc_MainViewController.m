@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Modern Enlarger Lamps. All rights reserved.
 //
 
-#import "MainViewController.h"
+#import "alc_MainViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 

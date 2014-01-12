@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Modern Enlarger Lamps. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "alc_AppDelegate.h"
 
 @implementation AppDelegate
 
