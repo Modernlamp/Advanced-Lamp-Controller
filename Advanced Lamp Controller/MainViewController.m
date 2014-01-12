@@ -391,26 +391,6 @@
     [holdTimer fire];
 }
 
-- (IBAction)timeChangeDownStart:(id)sender {// This action is taken when the Down seconds button is PRESSED.
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *externalControl = [prefs stringForKey:@"externalControl"];
-    
-    if ([externalControl isEqual: @"OFF"]){ // Disabled when under External Control.
-        holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(zipTimeDown) userInfo:nil repeats:NO];
-        [self timeDown];
-    }
-}
-
-- (void)zipTimeDown{
-    holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.06 target:self selector:@selector(timeDown) userInfo:nil repeats:YES];
-    [holdTimer fire];
-}
-
-- (IBAction)zipChangeStop:(id)sender { // This action is taken when either the UP or Down seconds buttons are RELEASED.
-    [holdTimer invalidate];
-}
-
-
 - (void) timeUp{
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -428,6 +408,20 @@
     }
 }
 
+- (IBAction)timeChangeDownStart:(id)sender {// This action is taken when the Down seconds button is PRESSED.
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *externalControl = [prefs stringForKey:@"externalControl"];
+    
+    if ([externalControl isEqual: @"OFF"]){ // Disabled when under External Control.
+        holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(zipTimeDown) userInfo:nil repeats:NO];
+        [self timeDown];
+    }
+}
+
+- (void)zipTimeDown{
+    holdTimer = [NSTimer scheduledTimerWithTimeInterval:0.06 target:self selector:@selector(timeDown) userInfo:nil repeats:YES];
+    [holdTimer fire];
+}
 
 - (void) timeDown{
     
@@ -446,6 +440,11 @@
     }
 }
 
+- (IBAction)zipChangeStop:(id)sender { // This action is taken when either the UP or Down seconds buttons are RELEASED.
+    [holdTimer invalidate];
+    [holdTimer invalidate];
+
+}
 
 - (IBAction)positionButtonPressed:(id)sender {  //This action occurs when the POSITION button is pressed. For safety, action is taken only when an exposure is not in progress.
     
@@ -458,7 +457,6 @@
         if (redOnOff == 0){
             
             if (exposeButtonIsOn == NO){ // Check that an exposure is not in progress
-                
                 redOnOff = 1;
                 [[positionButton layer] setBorderWidth:thickBorderWidth];
                
@@ -478,7 +476,6 @@
                 [bleShield write:d];
             }
         }
-        
         else{
             // Reset the FOCUS button
             redOnOff = 0;
@@ -503,9 +500,7 @@
     NSString *externalControl = [prefs stringForKey:@"externalControl"];
     
     if ([externalControl isEqual: @"OFF"]){//disable the focus button when under external control
-        
         if (focusOnOff == 0){
-            
             if (exposeButtonIsOn == NO){ // Check that an exposure is not in progress
                 
                 focusOnOff = 1;
@@ -527,7 +522,6 @@
                 [bleShield write:d];
             }
         }
-        
         else{
             focusOnOff = 0;
             [[focusButton layer] setBorderWidth:thinBorderWidth];
@@ -573,6 +567,10 @@
         //Reset POSITION button (redButton)
         redOnOff = 0;
         [[positionButton layer] setBorderWidth:thinBorderWidth];
+        
+        [holdTimer invalidate];
+        [holdTimer invalidate];
+
         
         [self bleShieldSendNull];
     }
